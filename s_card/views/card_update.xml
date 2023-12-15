@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="update_smart_card_form" name="Update Smart Card">
+        <t t-call="website.layout">
+            <div class="container">
+                <form t-att-action="'/smart-card/form/update/infor/' + str(card_record.get('id'))" method="post"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                        <div class="row mb-0 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field">
+                            <div class="form-group col-md-6 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="update_contact1">
+                                    Name *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="update_contact1" type="text"
+                                           class="form-control" name="name"
+                                           required="True" t-att-value="card_record.get('name')"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto"
+                                       style="width: 200px" for="update_contact5">
+                                    Title *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="update_contact5" type="tel"
+                                           class="form-control"
+                                           name="title" required="True" t-att-value="card_record.get('title')"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-0 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Phone">
+                            <div class="form-group col-md-6 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="update_contact2">
+                                    Phone *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="update_contact2" type="tel"
+                                           class="form-control"
+                                           name="phone" required="True" t-att-value="card_record.get('phone')"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-0 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Email">
+                            <div class="form-group col-md-6 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="update_contact3">
+                                    Email *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="update_contact3" type="email"
+                                           class="form-control"
+                                           name="email" required="True" t-att-value="card_record.get('email')"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-0 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Avatar">
+                            <div class="form-group col-md-6 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="update_contact4">
+                                    Avatar *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="update_contact4" type="file"
+                                           class="custom-file-input"
+                                           name="avatar" required="True"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-0 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Logo Company">
+                            <div class="form-group col-md-6 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="update_contact5">
+                                    Logo Company *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="update_contact5" type="file"
+                                           class="custom-file-input"
+                                           name="logo_company" required="True"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-0 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Social Entries">
+                            <t t-set="id" t-value="1"/>
+                            <t t-foreach="card_record.get('social')" t-as="social">
+                                <div class="row">
+                                    <div class="form-group col-md-6 s_col_no_bgcolor">
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control"
+                                                   t-att-name="'social_name_' + str(id)" required="True"
+                                                   t-att-value="social.get('name')"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6 s_col_no_bgcolor">
+                                        <div class="col-sm">
+                                            <input type="text"
+                                                   t-att-name="'social_' + str(id)"
+                                                   class="form-control"
+                                                   t-att-value="social.get('social')" required="True"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <t t-set="id" t-value="id+1"/>
+                            </t>
+                        </div>
+                        <div class="mb-0 py-2 col-12 s_website_form_submit" data-name="Submit Button">
+                            <div style="width: 200px;" class="s_website_form_label"/>
+                            <button type="submit" class="btn btn-primary btn-lg s_website_form_send">Update</button>
+                            <span id="s_website_form_result"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>

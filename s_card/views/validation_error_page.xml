@@ -1,0 +1,11 @@
+<odoo>
+    <template id="validation_error_page" name="Validation Error Page">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h2 class="text-danger">Validation Error</h2>
+                <p t-esc="error_message"/>
+                <p>Please go back and correct the form.</p>
+            </div>
+        </t>
+    </template>
+</odoo>

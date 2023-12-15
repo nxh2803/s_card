@@ -1,0 +1,10 @@
+<odoo>
+    <template id="error_page" name="Thank You Page">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h2 class="text-danger">Error page</h2>
+                <p>Please go back and correct the form.</p>
+            </div>
+        </t>
+    </template>
+</odoo>

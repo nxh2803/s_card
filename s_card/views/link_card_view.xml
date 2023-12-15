@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="link_card_tree_view" model="ir.ui.view">
+            <field name="name">link_card.tree</field>
+            <field name="model">link.card</field>
+            <field name="arch" type="xml">
+                <tree string="Link" editable="top" expand="1">
+                    <field name="card_id"/>
+                    <field name="name"/>
+                    <field name="link"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="link_card_search_view" model="ir.ui.view">
+            <field name="name">link_card.search</field>
+            <field name="model">link.card</field>
+            <field name="arch" type="xml">
+                <search string="Link">
+                    <field name="name"/>
+                    <field name="link"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="Card" name="groupby_card_id" context="{'group_by': 'card_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="link_card_act_window" model="ir.actions.act_window">
+            <field name="name">Link</field>
+            <field name="res_model">link.card</field>
+            <field name="view_mode">tree</field>
+            <field name="context">
+                {'search_default_groupby_card_id': 1}
+            </field>
+
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="smart_card_form" name="Smart Card">
+        <t t-call="website.layout">
+            <div class="container">
+                <form action="/card/submit" method="post"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                        <div class="row mb-0 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field">
+                            <div class="form-group col-md-6 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="contact1">
+                                    Name *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="contact1" type="text"
+                                           class="form-control" name="name"
+                                           required="True" data-fill-with="name" t-att-value="cards.get('name')"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                       style="width: 200px" for="contact4">
+                                    Company *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="contact4" type="text"
+                                           class="form-control"
+                                           name="company" required="True"
+                                           data-fill-with="company"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto"
+                                       style="width: 200px" for="contact5">
+                                    Title *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="contact5" type="text"
+                                           class="form-control"
+                                           name="title" required="True" data-fill-with="title"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-0 py-2 col-12 s_website_form_field s_website_form_custom"
+                             data-type="char" data-name="Field">
+                            <div class="form-group col-md-4 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto"
+                                       style="width: 200px" for="contact2">
+                                    Phone *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="contact2" type="tel"
+                                           class="form-control "
+                                           name="phone" required="True" data-fill-with="phone"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto"
+                                       style="width: 200px" for="contact2">
+                                    Work Phone *
+                                </label>
+                                <div class="col-sm">
+                                    <input id="contact2" type="tel"
+                                           class="form-control"
+                                           name="work_phone" required="True" data-fill-with="work_phone"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 s_col_no_bgcolor">
+                                <label class="col-form-label"
+                                       style="width: 200px" for="contact3">
+                                    Email address *
+                                </label>
+                                <input id="contact3" type="email"
+                                       class="form-control"
+                                       name="email" required="True"
+                                       data-fill-with="email" t-att-value="cards.get('email')" aria-describedby="emailHelp" placeholder=""/>
+                            </div>
+                        </div>
+                        <div class="row mb-0 py-2 col-12 s_website_form_field s_website_form_required"
+                             data-type="text" data-name="Field">
+                            <div class="raw s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto"
+                                       style="width: 140px" for="contact6">
+                                    Content
+                                </label>
+                                <div class="col-sm">
+                                    <textarea id="contact6"
+                                              class="form-control"
+                                              name="content" data-fill-with="content"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-0 py-2 s_website_form_field"
+                             data-type="char" data-name="Field">
+                            <div class="form-group col-md-6 s_col_no_bgcolor">
+                                <label class="col-sm-auto"
+                                       style="width: 200px" for="contact7">
+                                    Video URL
+                                </label>
+                                <div class="col-sm">
+                                    <input id="contact7" type="text"
+                                           class="form-control"
+                                           name="video" data-fill-with="video"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 s_col_no_bgcolor">
+                                <label class="col-sm-auto"
+                                       style="width: 200px" for="contact8">
+                                    Company URL
+                                </label>
+                                <div class="col-sm">
+                                    <input id="contact8" type="text"
+                                           class="form-control"
+                                           name="url_company" data-fill-with="url_company"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="" data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12" data-type="binary"
+                             data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-sm-auto "
+                                       style="width: 200px"
+                                       for="contact9">
+                                    Author's avatar
+                                </label>
+                                <div class="col-sm">
+                                    <input type="file" class="custom-file-input"
+                                           name="avatar" id="contact9"
+                                           data-fill-with="avatar"/>
+                                </div>
+                                <small id="emailHelp" class="form-text text-muted">Require that the avatar has a square
+                                    aspect ratio.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                            <label class="col-sm-auto"
+                                   style="width: 200px" for="contact10">
+                                Logo Company
+                            </label>
+                            <div class="col-sm">
+                                <input type="file" class="custom-file-input"
+                                       name="logo_company" id="contact10"
+                                       data-fill-with="logo_company"/>
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">Require that the logo background does not
+                                have too much empty space.
+                            </small>
+                        </div>
+                        <div class="row" style="margin-top: 30px;">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active"
+                                       id="globe-tab-link"
+                                       data-bs-toggle="tab"
+                                       href="#globe-tab-content"
+                                       role="tab"
+                                       aria-controls="globe-tab-content"
+                                       aria-selected="true">Globe
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       id="social-tab-link"
+                                       data-bs-toggle="tab"
+                                       href="#social-tab-content"
+                                       role="tab"
+                                       aria-controls="social-tab-content"
+                                       aria-selected="false">Social
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       id="link-tab-link"
+                                       data-bs-toggle="tab"
+                                       href="#link-tab-content"
+                                       role="tab"
+                                       aria-controls="link-tab-content"
+                                       aria-selected="false">Website
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       id="image-tab-link"
+                                       data-bs-toggle="tab"
+                                       href="#image-tab-content"
+                                       role="tab"
+                                       aria-controls="image-tab-content"
+                                       aria-selected="false">Image
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row s_tabs_content tab-content card-body s_tabs_slide_left">
+                            <div class="tab-pane fade active show" id="globe-tab-content" role="tabpanel"
+                                 aria-labelledby="globe-tab-link">
+                                <div class="entry-container" id="globeContainer" style="clear: both;"
+                                     data-entry-class="globe-entry">
+                                    <div class="globe-entry"
+                                         style="background-color: #f2f2f2; padding: 10px; border-radius: 10px;position: relative;">
+                                        <div style="display: flex;justify-content: center;margin: 8px 0px;">
+                                            <label class="col-sm-auto col-md-10 col-10">
+                                                Address 1 *
+                                            </label>
+                                        </div>
+                                        <div class="entry-inputs"
+                                             style="margin-bottom:30px;display: flex;justify-content: center;">
+                                            <div class="form-group col-md-10 col-10">
+                                                <label class="col-sm-auto"
+                                                       style="width: 200px; font-size: 14px; color: #999;">Name:
+                                                </label>
+                                                <input type="text" name="globe_name_1" class="form-control my-2"
+                                                       placeholder="Head Office, Branch, Factory 01,..."
+                                                       required="True"/>
+                                                <label class="col-sm-auto"
+                                                       style="width: 200px; font-size: 14px; color: #999;">Address:
+                                                </label>
+                                                <input type="text" name="globe_1" class="form-control my-2"
+                                                       placeholder="Ha Noi, Viet Nam" required="True"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn btn-light btn-default"
+                                        style="margin: 6px 0px;"
+                                        onclick="addEntry('globeContainer', 'globe-entry', 'globe_name', 'globe', 'Name', 'Address', 'Viet Nam', 'Head Office, Branch, Factory 01,...')">
+                                    + Add
+                                </button>
+                            </div>
+                            <div class="tab-pane fade" id="social-tab-content" role="tabpanel"
+                                 aria-labelledby="social-tab-link">
+                                <div class="entry-container" id="socialContainer" data-entry-class="social-entry"
+                                     style="clear: both;">
+                                    <div class="social-entry"
+                                         style="background-color: #f2f2f2; padding: 10px; border-radius: 10px;position: relative;">
+                                        <div style="display: flex;justify-content: center;margin: 8px 0px;">
+                                            <label class="col-sm-auto col-md-10 col-10">
+                                                Social 1 *
+                                            </label>
+                                        </div>
+                                        <div class="entry-inputs"
+                                             style="margin-bottom:30px;display: flex;justify-content: center;">
+                                            <div class="form-group col-md-10 col-10">
+                                                <label class="col-sm-auto"
+                                                       style="width: 200px; font-size: 14px; color: #999;">Name:
+                                                </label>
+                                                <input type="text" name="social_name_1" class="form-control my-2"
+                                                       placeholder="facebook, zalo, twitter,..." required="True"
+                                                       onchange="validateSocialName(this)"/>
+                                                <label class="col-sm-auto"
+                                                       style="width: 200px; font-size: 14px; color: #999;">Link:
+                                                </label>
+                                                <input type="text" name="social_1" class="form-control my-2"
+                                                       placeholder="e.g. https://zalo.me/ + 'phone number'"
+                                                       required="True"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn btn-light btn-default" style="margin: 6px 0px;"
+                                        onclick="addEntry('socialContainer', 'social-entry', 'social_name', 'social', 'Name', 'Social', 'e.g. https://zalo.me/ + phone number', 'facebook, zalo, twitter,...')">
+                                    + Add
+                                </button>
+                            </div>
+                            <div class="tab-pane fade" id="link-tab-content" role="tabpanel"
+                                 aria-labelledby="link-tab-link">
+                                <div class="entry-container" id="linkContainer" data-entry-class="link-entry"
+                                     style="clear: both;">
+                                    <div class="link-entry"
+                                         style="background-color: #f2f2f2; padding: 10px; border-radius: 10px;position: relative;">
+                                        <div style="display: flex;justify-content: center;margin: 8px 0px;">
+                                            <label class="col-sm-auto col-md-10 col-10">
+                                                Website 1 *
+                                            </label>
+                                        </div>
+                                        <div class="entry-inputs"
+                                             style="margin-bottom:30px;display: flex;justify-content: center;">
+                                            <div class="form-group col-md-10 col-10">
+                                                <label class="col-sm-auto"
+                                                       style="width: 200px; font-size: 14px; color: #999;">Name:
+                                                </label>
+                                                <input type="text" name="link_name_1" class="form-control my-2"
+                                                       placeholder="Fanpage" required="True"/>
+                                                <label class="col-sm-auto"
+                                                       style="width: 200px; font-size: 14px; color: #999;">Link:
+                                                </label>
+                                                <input type="text" name="link_1" class="form-control my-2"
+                                                       placeholder="e.g. https://www.facebook.com/"
+                                                       required="True"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn btn-light btn-default"
+                                        style="margin: 6px 0px;"
+                                        onclick="addEntry('linkContainer', 'link-entry', 'link_name', 'link', 'Name', 'Link', 'e.g. https://www.facebook.com/', 'Fanpage')">
+                                    + Add
+                                </button>
+                            </div>
+                            <div class="tab-pane fade" id="image-tab-content" role="tabpanel" style="width: 1240px;"
+                                 aria-labelledby="image-tab-link">
+                                <small id="emailHelp" class="form-text text-muted">
+                                    Add exactly 6 – 9 photos to make your card look better
+                                </small>
+                                <div class="entry-container" id="imageContainer" style="clear: both;"
+                                     data-entry-class="image-entry">
+                                    <div class="image-entry"
+                                         style="display: flex;align-items: center;justify-content: space-between;">
+                                        <input type="file" name="image_1" class="my-2" accept="image/*"/>
+                                        <button type="button" class="btn btn-close btn-sm" aria-label="Close"
+                                                onclick="removeImage(this)">
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn btn-light btn-default"
+                                        style="margin: 6px 0px;"
+                                        onclick="addImage('imageContainer', 'image-entry')">
+                                    + Add
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-20 py-2 col-12 s_website_form_submit"
+                             data-name="Submit Button" style="text-align: center;margin: 40px 0px;">
+                            <div style="width: 300px;" class="s_website_form_label"/>
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg s_website_form_send">Submit
+                            </button>
+                            <span id="s_website_form_result"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+        <script type="text/javascript" src="/s_card/static/src/js/card_form.js"/>
+    </template>
+</odoo>

@@ -1,0 +1,433 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_card
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 10:24+0000\n"
+"PO-Revision-Date: 2023-10-24 10:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<span>Giới thiệu</span>"
+msgstr ""
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<span>Liên kết</span>"
+msgstr ""
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<span>Lưu danh bạ</span>"
+msgstr ""
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<span>Mạng xã hội</span>"
+msgstr ""
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<span>Thông tin liên hệ</span>"
+msgstr ""
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<span>Thư viện hình ảnh</span>"
+msgstr ""
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<span>Video</span>"
+msgstr ""
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<span>snine.vn © 2023</span>"
+msgstr ""
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "<strong>Sao chép &amp; chia sẻ</strong>"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_needaction
+msgid "Action Needed"
+msgstr "Hành động cần thiết"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_ids
+msgid "Activities"
+msgstr "Các hoạt động"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Trang trí ngoại lệ hoạt động"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_state
+msgid "Activity State"
+msgstr "Trạng thái hoạt động"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Biểu tượng loại hoạt động"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_attachment_count
+msgid "Attachment Count"
+msgstr "Số lượng tệp đính kèm"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__avatar
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_kanban
+msgid "Avatar"
+msgstr "Hình đại diện"
+
+#. module: s_card
+#: model:ir.actions.act_window,name:s_card.sne_card_action
+#: model:ir.model.fields,field_description:s_card.field_link_card__card_id
+#: model:ir.model.fields,field_description:s_card.field_social_card__card_id
+#: model:ir.ui.menu,name:s_card.card_root
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_form
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_tree
+msgid "Card"
+msgstr "Thẻ"
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid ""
+"Chia sẻ trang của bạn với bất kỳ ai bằng cách yêu cầu họ quét mã QR này"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__code
+msgid "Code"
+msgstr "Mã số"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__company
+msgid "Company"
+msgstr "Công ty"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__content
+msgid "Content"
+msgstr "Nội dung"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_link_card__create_uid
+#: model:ir.model.fields,field_description:s_card.field_sne_card__create_uid
+#: model:ir.model.fields,field_description:s_card.field_social_card__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_link_card__create_date
+#: model:ir.model.fields,field_description:s_card.field_sne_card__create_date
+#: model:ir.model.fields,field_description:s_card.field_social_card__create_date
+msgid "Created on"
+msgstr "Được tạo ra"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_link_card__display_name
+#: model:ir.model.fields,field_description:s_card.field_sne_card__display_name
+#: model:ir.model.fields,field_description:s_card.field_social_card__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__email
+msgid "Email"
+msgstr "Email"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_follower_ids
+msgid "Followers"
+msgstr "Người theo dõi"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Người theo dõi (Đối tác)"
+
+#. module: s_card
+#: model:ir.model.fields,help:s_card.field_sne_card__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__globe
+msgid "Globe"
+msgstr "Địa chỉ"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_link_card__id
+#: model:ir.model.fields,field_description:s_card.field_sne_card__id
+#: model:ir.model.fields,field_description:s_card.field_social_card__id
+msgid "ID"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,help:s_card.field_sne_card__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,help:s_card.field_sne_card__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,help:s_card.field_sne_card__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__image
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_form
+msgid "Image"
+msgstr "Ảnh"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__qr_code_img
+msgid "Image QR"
+msgstr "Ảnh QR"
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_form
+msgid "Infor"
+msgstr "Thông tin"
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_form
+msgid "Information"
+msgstr "Thông tin"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__job
+msgid "Job"
+msgstr "Công việc"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_link_card____last_update
+#: model:ir.model.fields,field_description:s_card.field_sne_card____last_update
+#: model:ir.model.fields,field_description:s_card.field_social_card____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_link_card__write_uid
+#: model:ir.model.fields,field_description:s_card.field_sne_card__write_uid
+#: model:ir.model.fields,field_description:s_card.field_social_card__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_link_card__write_date
+#: model:ir.model.fields,field_description:s_card.field_sne_card__write_date
+#: model:ir.model.fields,field_description:s_card.field_social_card__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: s_card
+#: model:ir.actions.act_window,name:s_card.link_card_act_window
+#: model:ir.model.fields,field_description:s_card.field_link_card__link
+#: model:ir.model.fields,field_description:s_card.field_sne_card__link
+#: model:ir.model.fields,field_description:s_card.field_social_card__link
+#: model:ir.ui.menu,name:s_card.link_categ
+#: model_terms:ir.ui.view,arch_db:s_card.link_card_search_view
+#: model_terms:ir.ui.view,arch_db:s_card.link_card_tree_view
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_form
+msgid "Link"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model,name:s_card.model_link_card
+msgid "Link Card"
+msgstr "Thẻ liên kết"
+
+#. module: s_card
+#: model:ir.ui.menu,name:s_card.sne_card_categ
+msgid "List Card"
+msgstr "Danh sách thẻ"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Tệp đính kèm chính"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_has_error
+msgid "Message Delivery error"
+msgstr "Lỗi gửi tin nhắn"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_ids
+msgid "Messages"
+msgstr "Tin nhắn"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Hạn chót hoạt động của tôi"
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.card_template
+msgid "Mã QR"
+msgstr "Mã QR"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_link_card__name
+#: model:ir.model.fields,field_description:s_card.field_sne_card__name
+#: model:ir.model.fields,field_description:s_card.field_social_card__name
+msgid "Name"
+msgstr "Họ và tên"
+
+#. module: s_card
+#. odoo-python
+#: code:addons/s_card/models/sne_card.py:0
+#: code:addons/s_card/models/sne_card.py:0
+#: code:addons/s_card/models/sne_card.py:0
+#: code:addons/s_card/models/sne_card.py:0
+#, python-format
+msgid "New"
+msgstr "Mới"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Hạn chót hoạt động tiếp theo"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_summary
+msgid "Next Activity Summary"
+msgstr "Tóm tắt hoạt động tiếp theo"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_type_id
+msgid "Next Activity Type"
+msgstr "Loại hoạt động tiếp theo"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Số lượng hành động"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__message_has_error_counter
+msgid "Number of errors"
+msgstr "Số lỗi"
+
+#. module: s_card
+#: model:ir.model.fields,help:s_card.field_sne_card__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Số lượng tin nhắn yêu cầu hành động"
+
+#. module: s_card
+#: model:ir.model.fields,help:s_card.field_sne_card__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Số lượng tin nhắn có lỗi gửi"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__phone
+msgid "Phone"
+msgstr "Điện thoại"
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_tree
+msgid "QR-Code"
+msgstr "Mã QR"
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__activity_user_id
+msgid "Responsible User"
+msgstr "Người dùng có trách nhiệm"
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_tree
+msgid "S-Card"
+msgstr ""
+
+#. module: s_card
+#: model:ir.model,name:s_card.model_sne_card
+msgid "Smart Card"
+msgstr "Thẻ thông minh"
+
+#. module: s_card
+#: model:ir.actions.act_window,name:s_card.social_card_act_window
+#: model:ir.model.fields,field_description:s_card.field_sne_card__social
+#: model:ir.ui.menu,name:s_card.social_categ
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_form
+#: model_terms:ir.ui.view,arch_db:s_card.social_card_search_view
+#: model_terms:ir.ui.view,arch_db:s_card.social_card_tree_view
+msgid "Social"
+msgstr "Xã hội"
+
+#. module: s_card
+#: model:ir.model,name:s_card.model_social_card
+msgid "Social Card"
+msgstr "Thẻ xã hội"
+
+#. module: s_card
+#: model:ir.model.fields,help:s_card.field_sne_card__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__tel
+msgid "Tel"
+msgstr "Điện thoại"
+
+#. module: s_card
+#: model:ir.model.fields,help:s_card.field_sne_card__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Loại hoạt động ngoại lệ được ghi lại."
+
+#. module: s_card
+#: model:ir.model.fields,field_description:s_card.field_sne_card__video
+msgid "Video"
+msgstr "Video"
+
+#. module: s_card
+#: model_terms:ir.ui.view,arch_db:s_card.sne_card_view_form
+msgid "e.g. https://www.odoo.com"
+msgstr "e.g. https://www.snine.vn"
+
+
+#. module: s_card
+#: model:ir.ui.menu,name:s_card.configuration_root
+msgid "Configuration"
+msgstr "Cấu hình"

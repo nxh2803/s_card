@@ -1,0 +1,9 @@
+<odoo>
+    <template id="thank_you_page" name="Thank You Page">
+        <t t-call="website.layout">
+            <div class="container" style="text-align: center;margin-top: 50px;">
+                <h1 style="color: #005bac;font-size: 26px;margin-top: 194px;margin-bottom: 194px;">Thank You for Your Submission!</h1>
+            </div>
+        </t>
+    </template>
+</odoo>

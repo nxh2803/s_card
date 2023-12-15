@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="social_card_tree_view" model="ir.ui.view">
+            <field name="name">social_card.tree</field>
+            <field name="model">social.card</field>
+            <field name="arch" type="xml">
+                <tree string="Social" editable="top" expand="1">
+                    <field name="card_id"/>
+                    <field name="name"/>
+                    <field name="social"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="social_card_search_view" model="ir.ui.view">
+            <field name="name">social_card.search</field>
+            <field name="model">social.card</field>
+            <field name="arch" type="xml">
+                <search string="Social">
+                    <field name="name"/>
+                    <field name="social"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="Card" name="groupby_card_id" context="{'group_by': 'card_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="social_card_act_window" model="ir.actions.act_window">
+            <field name="name">Social</field>
+            <field name="res_model">social.card</field>
+            <field name="view_mode">tree</field>
+            <field name="context">
+                {'search_default_groupby_card_id': 1}
+            </field>
+        </record>
+    </data>
+</odoo>

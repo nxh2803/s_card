@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="card_root"
+                  name="Card"
+                  sequence="0"
+                  web_icon="s_card,static/description/icon.png">
+            <menuitem id="sne_card_categ"
+                      name="List Card"
+                      action="sne_card_action"
+                      sequence="0"/>
+
+            <menuitem id="configuration_root" name="Configuration" sequence="10">
+                <menuitem id="globe_categ" name="Globe" action="globe_card_act_window" sequence="0"/>
+                <menuitem id="link_categ" name="Link" action="link_card_act_window" sequence="0"/>
+                <menuitem id="social_categ" name="Social" action="social_card_act_window" sequence="0"/>
+            </menuitem>
+        </menuitem>
+    </data>
+</odoo>

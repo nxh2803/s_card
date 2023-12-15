@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sne_card,sne_card,model_sne_card,base.group_user,1,1,1,1
+access_link_card,link_card,model_link_card,base.group_user,1,1,1,1
+access_social_card,social_card,model_social_card,base.group_user,1,1,1,1
+access_globe_card,globe_card,model_globe_card,base.group_user,1,1,1,1

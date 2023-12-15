@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sne_card_view_tree" model="ir.ui.view">
+            <field name="name">sne_card_view_tree</field>
+            <field name="model">sne.card</field>
+            <field name="arch" type="xml">
+                <tree string="Card">
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="work_phone"/>
+                    <field name="email"/>
+                    <button name="action_web_card" string="S-Card" type="object" class="oe_highlight"/>
+                    <button name="gen_qr_code" string="QR-Code" type="object" class="oe_highlight"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sne_card_view_form" model="ir.ui.view">
+            <field name="name">sne_card_view_form</field>
+            <field name="model">sne.card</field>
+            <field name="arch" type="xml">
+                <form string="Card">
+                    <sheet>
+                        <h1>
+                            <field name="name" readonly="True"/>
+                            <field name="avatar" widget="image" class="oe_avatar" options="{'size': (100, 100)}"/>
+                            <field name="qr_code_img" widget="image" class="oe_avatar" options="{'size': (100, 100)}"
+                                   readonly="True"/>
+                        </h1>
+                        <br/>
+                        <group string="Information">
+                            <group>
+                                <field name="name"/>
+                                <field name="title"/>
+                                <field name="company"/>
+                            </group>
+                            <group>
+                                <field name="phone"/>
+                                <field name="work_phone"/>
+                                <field name="email"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="infor" string="Infor">
+                                <group string="Infor">
+                                    <field name="content"/>
+                                </group>
+                                <group string="URL">
+                                    <field name="url_company" widget="url" placeholder="e.g. https://www.odoo.com/"/>
+                                    <field name="video" widget="url" placeholder="e.g. https://www.youtube.com/"/>
+                                </group>
+                            </page>
+                            <page string="Globe">
+                                <field name="globe">
+                                    <tree editable="bottom">
+                                        <field name="name" placeholder="Head Office, Branch, Factory 01,..."/>
+                                        <field name="globe" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Social">
+                                <field name="social">
+                                    <tree editable="bottom">
+                                        <field name="name" placeholder="zalo, facebook, twitter,..."/>
+                                        <field name="social" widget="url" placeholder="e.g. https://zalo.me/ + 'phone'"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Link">
+                                <field name="link">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="link" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        <notebook>
+                            <page name="image" string="Image">
+                                <group>
+                                    <field name="image" widget="many2many_binary"/>
+                                </group>
+                            </page>
+                            <page name="logo" string="Logo">
+                                <group>
+                                    <field name="logo_company" widget="image" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter" style="color:red">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sne_card_view_kanban">
+            <field name="name">card.kanban</field>
+            <field name="model">sne.card</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="id"/>
+                    <field name="avatar"/>
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img alt="Avatar"
+                                         t-att-src="kanban_image('sne.card', 'avatar', record.id.raw_value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li class="mb4">
+                                            <strong>
+                                                <field name="code"/>
+                                            </strong>
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>
+                                                <field name="name"/>
+                                            </strong>
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>
+                                                <field name="company"/>
+                                            </strong>
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>
+                                                <field name="phone"/>
+                                            </strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="sne_card_action" model="ir.actions.act_window">
+            <field name="name">Card</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sne.card</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+    </data>
+</odoo>

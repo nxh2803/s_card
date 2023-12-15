@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="card_template_update">
+            <head>
+                <title>
+                    <t t-esc="cards.get('name')"/>
+                </title>
+                <meta charset="utf-8"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta name="robots" content="index,follow,all"/>
+                <link href="/s_card/static/src/css/uikit.docs.min.css" rel="stylesheet"/>
+
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"/>
+                <link rel="stylesheet"
+                      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+                      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                      crossorigin="anonymous"/>
+                <meta name="keywords" content=""/>
+                <meta property="og:image" content="/s_card/static/description/logo-sne.png"/>
+                <link href="/s_card/static/description/logoS9.png" rel="icon" type="image/png"/>
+                <link href="https://ianlunn.github.io/Hover/css/hover.css" rel="stylesheet"/>
+                <meta name="robots" content="index,follow,all"/>
+                <link href="/s_card/static/src/css/card_template_update.css" rel="stylesheet"/>
+                <link rel="stylesheet"
+                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                <script src="/s_card/static/src/js/jquery.min.js"/>
+                <script src="/s_card/static/src/js/uikit.min.js"/>
+                <script src="/s_card/static/src/js/core/modal.min.js"/>
+                <script src="/s_card/static/src/js/lightbox.min.js"/>
+                <script src="/s_card/static/src/js/card_template_update.js"/>
+                <script src="https://wurfl.io/wurfl.js"/>
+            </head>
+            <body id="user-profile">
+                <div id="card" class="apply container">
+                    <div class="background">
+                        <div id="profile">
+                            <div class="background-container"/>
+                            <div class="avatar-container">
+                                <div class="avatar-border">
+                                    <div class="avatar">
+                                        <t t-if="cards.get('avatar')">
+                                            <img t-att-src="image_data_uri(cards.get('avatar'))" alt=""/>
+                                        </t>
+                                        <t t-else="">
+                                            <img src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QBqRXhpZgAASUkqAAgAAAADABIBAwABAAAAAQAAADEBAgARAAAAMgAAAGmHBAABAAAARAAAAAAAAABTaG90d2VsbCAwLjMwLjE0AAACAAKgCQABAAAAmwEAAAOgCQABAAAAmgEAAAAAAAD/4Qn0aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA0LjQuMC1FeGl2MiI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIiB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIgZXhpZjpQaXhlbFhEaW1lbnNpb249IjQxMSIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjQxMCIgdGlmZjpJbWFnZVdpZHRoPSI0MTEiIHRpZmY6SW1hZ2VIZWlnaHQ9IjQxMCIgdGlmZjpPcmllbnRhdGlvbj0iMSIvPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw/eHBhY2tldCBlbmQ9InciPz7/2wBDAAMCAgMCAgMDAwMEAwMEBQgF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A/8AQGrWl/ERE/hZ5a33j9aSlb7x+tJXsHEFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU4fdptGQBzR0A+hYf9Sn0FPqODmFMegqSvDe56AUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigArivir/yL8P8A18D/ANAau1rivir/AMi/D/18D/0Bq1pfxERP4WeWt94/WkpW+8frSV7BxBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAGTggcHHB+nNe2eGdMtbbQ7Hy4IwHhR2+UZJIyefxrxT+gz+fFe2+DZnn8L6a0n3hEF/Ikf0rjxV+VG9Lc2ExtGOntTqKK846QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACs3WNJtdahNveQieFTuCEkc4I7H3rSop7Cep494/0O10PU4Bar5UMybymSQCD6n61zB6nOMg44rs/ilOX8QQRHpHAMf8AAif8K4w9a9ei24Js45qzsFFFFakBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAoAIJ7gfz4r2H4fzibwtZgnJUvGR6YY147XqfwuuTNoE8Z/5YzkD8QD/AFrkxK9y5rS+I7RTlQfXmlpB0pa806wooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiio2IDfjmgDyT4kyeb4rmT7uyFFz68E/1rljySfXmtnxjOLjxPqLDospj/AO+Rt/pWNXtU9II4ZO7YUUUVZIUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFd18Kr3bfXlmekiCRfqOD+hrhauaRqT6RqNveR8tC+SPUY5H5VnUjzxcSou0kz3sdKWqul38OqafBdQNuhlXcp/pVqvG2O1BRRRQMKKKKACiiigAooooAKKKKACiiigAooooAKKKKACoZ5RAjyH7qAs30x/8AWqauO+ImuJpumPapJtuLv5cL1VR95vywKqMXJpIluyueX392b++uLk/8tZGcfQnIqCj+vNFe2lZWRwhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAHoXwrvP3d9as3OVlVf9no39K9EjzsGeT3rxv4f3htPFNqCdqzBoj78ZH6rXskeSik9SMmvKxCtU9Trp/COooornNQooooAKKKKACiiigAooooAKKKKACiiigAooooAhkcKxyQAOTn/AD9a8M13UH1TV7q5MhcPK3l56+Xnj9MV6/4tvl03Qr6c9TEUH1PA/ma8QGNox0xxXdhY7yOaq9kL075ooorvMAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigC7o16thqtncsMiCRXP0zXvKYKjHTtXz1ztIH1/+vXsvgjVxq2gWzFgZYh5Mi+hHT9MVw4qO0kdFLqjoqKRTlQfWlrgOgKKKKACiiigAooooAKKKKACiiigAooooAKKKjbqfwoA4j4p6h5Nna2Y/5buXf/dUZ/nXmRyevWt7xtqg1TxFO8f+rhAhX6KTn9c1g4wAPYV69GPLBHFN3kwooorYgKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK6TwP4gGh6l5c7YtLnCuT0Q5wH/AD4/GubpeoIycDkj26cVM4qUbMadnc+hY/uDjHtTq8+8CeMhKkemXsg8xflhlf8AiH90+/p7V6AOlePODg7M7YyUldC0UUVBQUUUUAFFFFABRRRQAUUUUAFFFFABXOeNNdGh6ZIVI+0TgxxDvkjk/gOfxrdlcRkkjj+fGf6V4j4j12XxFqTXLDbEPlij9FHNb0aftJeSMpy5UZZ69c+570UE559eeKK9Y5AooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKANbwnAbnxLpij+GcP/3z81e4r0rx34dxeb4qtzjPlxu/04x/7NXsKDaoHpxXm4n40jqpfCOooorkNgooooAKKKKACiiigAooooAKKKKAKmqf8g66/wCuTfyNeAr90fSvftU/5B11/wBcm/ka8BX7o+lehhdmc1XdC0UUV2mAUUUUAFFFFABRRRQAUUUUAFFFFABR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OJj0UEknJ5/L+lFbmYUUUUgClHUd+wAGTVrS9MutYu1t7SIzSHqOyj/aPYV6j4b8C2miBbiYi5vMfef7qeyisalWNPcuMXLY43QPh9f6sVlus2FuehdMyMPYdB+NekaL4csdCixawBHPDSNyzfU1qJ90U6vOnVlU3OmMFERelLRRWJoFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUyRQ4KsAQRjB5zT6KAOO174eWOokvaYspuuEUFGPuD0/CvPNa8N32gyf6VCVjzhZhyh+p7V7pUFzBHcIySIsikYKuNwP4V0U68oaPVGcoJnz9gjqSfcjFFdx4x8CGzD32nIzwjmS3U5K+4rh8575969KE41FeJyyi4uzPb/Dvh+18P2IhhGXbmWQ9XNbC9OmKRDlQadXittu7O7YKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAY/Py8c9j3Fcjf/AA20q8vJZh5sW85Kxn5Qe9djUbhtxx0pqUo/CTJKS1JKKKKRQUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/2Q=="
+                                                 alt=""/>
+                                        </t>
+                                    </div>
+                                    <t t-if="cards.get('user_id').id == cards.get('user_id_current')">
+                                        <a href="#edit-info" data-uk-modal="{center:true, bgclose:false}">
+                                            <i class="uk-icon-pencil"
+                                               style="font-size: 18px; position: absolute; bottom: 0; right: 9px; margin-right: 5px; color:#8B8E8C"/>
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="cover-logo text-center d-flex justify-content-center">
+                                <t t-if="cards.get('logo_company')">
+                                    <img class="logo-img"
+                                         style="height: 40px;display: block; margin-bottom:30px"
+                                         t-att-src="image_data_uri(cards.get('logo_company'))" alt="Image"/>
+                                </t>
+                                <t t-else="">
+                                    <img class="logo-img"
+                                         style="height: 40px;display: block; margin-bottom:30px"
+                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbsAAABYCAYAAABszlmGAAAAiXpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjaVY7JDcUwCETvVJES2MxSThIlUjr45X8cW4r8DjCD0ABcv+eGrUOooM3D0gwLTU3eSwQOBJEYqfeqg9mFSnHZ6UF4CMtw1G9RFReaWNjt6m7NTju50vkSeSuJwrvVw/or+QUdx1SyzlusB+APBUYtSfK6su0AAACAelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeNqNjjsOAzEIRHtOsUfgMwZ8HryW0qXI/RXWReoMEhrNPCHo9f4UXUfJZAnFxGL0/ASTYo1kFkZhI7C103ZrMAT3mMq6lE0e0if9i0L6fg7z9B2I8OHldRrvJshYb7Ozxfon+gK8Cyd96pO5PgAADS9pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDQuNC4wLUV4aXYyIj4KIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgIHhtbG5zOkF0dHJpYj0iaHR0cDovL25zLmF0dHJpYnV0aW9uLmNvbS9hZHMvMS4wLyIKICAgIHhtbG5zOnBkZj0iaHR0cDovL25zLmFkb2JlLmNvbS9wZGYvMS4zLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOmFjZHNlZT0iaHR0cDovL25zLmFjZHNlZS5jb20vaXB0Yy8xLjAvIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgcGRmOkF1dGhvcj0iSMO5bmcgTmd1eeG7hW4gWHXDom4iCiAgIHhtcDpDcmVhdG9yVG9vbD0iQ2FudmEiCiAgIHBob3Rvc2hvcDpIZWFkbGluZT0iTE9HTyBDT01QQU5ZIC0gMSIKICAgYWNkc2VlOmNhcHRpb249IkxPR08gQ09NUEFOWSAtIDEiCiAgIGV4aWY6UGl4ZWxYRGltZW5zaW9uPSI0NDMiCiAgIGV4aWY6UGl4ZWxZRGltZW5zaW9uPSI4OCIKICAgdGlmZjpJbWFnZVdpZHRoPSI0NDMiCiAgIHRpZmY6SW1hZ2VIZWlnaHQ9Ijg4IgogICB0aWZmOk9yaWVudGF0aW9uPSIxIj4KICAgPGRjOnRpdGxlPgogICAgPHJkZjpBbHQ+CiAgICAgPHJkZjpsaSB4bWw6bGFuZz0ieC1kZWZhdWx0Ij5MT0dPIENPTVBBTlkgLSAxPC9yZGY6bGk+CiAgICA8L3JkZjpBbHQ+CiAgIDwvZGM6dGl0bGU+CiAgIDxBdHRyaWI6QWRzPgogICAgPHJkZjpTZXE+CiAgICAgPHJkZjpsaQogICAgICBBdHRyaWI6Q3JlYXRlZD0iMjAyMy0xMi0xMyIKICAgICAgQXR0cmliOkV4dElkPSI3MTczZDExYS0yY2E3LTQzYjItYWNlMy02ZTUxZTFkMDQ1YjgiCiAgICAgIEF0dHJpYjpGYklkPSI1MjUyNjU5MTQxNzk1ODAiCiAgICAgIEF0dHJpYjpUb3VjaFR5cGU9IjIiLz4KICAgIDwvcmRmOlNlcT4KICAgPC9BdHRyaWI6QWRzPgogIDwvcmRmOkRlc2NyaXB0aW9uPgogPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgIAo8P3hwYWNrZXQgZW5kPSJ3Ij8+hVdfZAAAAARzQklUCAgICHwIZIgAAB2sSURBVHja7Z3ZdxzXfee/VdX7vgPd2EGQ4C4SJCjSEiXakqXYGVo5ipex5zjjk8zJTPKQkzln/ox5mYc5c87MSTyJM5PxItmOYo8sWSspiau4iBu4gNgbQDd6X6tryQMEhiDQdau7CwuB3+eNRHV19b237vfe3/0tnKqqKgiCIAhiC8NTExAEQRAkdgRBEARBYkcQBEEQJHYEQRAEQWJHEARBECR2BEEQBEFiRxAEQRAkdgRBEASJHUEQBEGQ2BEEQRAEiR1BEARBkNgRBEEQBIkdQRAEQZDYEQRBEASJHUEQBEGQ2BEEQRAkdgRBEASxFTGt9xfKioqaXL84ukngYOI56hmiZURZxXy2grlsBYWKhIqkQJIUmE08bGYBLpsJEY8VEa8NFoHGHEGQ2BnI+QcpvHdzvu7fn+n24VtDUeoZojmBkxR8MZnF7Zk8xpMlKKrK/AwHoM1rw852FwajbkR9NmpIgiCxI4jNR01Wce7+As7fT6Fckxv6rApgNlvBbLaCMyNJRDxWHO3z40C3j3Z8BEFiRxCbg6lUGb++PINUUTTkfvO5Kn57bRaSouLZHQFqYIIgsSOIjeXqeAa/uTqry1zZ0IvBczjY7aMGJggSO4LYWC6OpvH29dk1uffumAd2MzkrE8RWgd5m4qlkdL6I330xt2b3H+qlXR1B0M6OIDaQYlXGLy9NQ9VhurSbBQxG3Rhod8FjN8FuMaEiyshVaphIljCWKGEuV1n2maDLgp6QgxqaIEjsCGLjeP/mPEqitsclB+BInx8v7W9b6VHpNCMGG3ZH3QCARL6Kq+MZXBvPolyTcbiHdnUEQWK3RZnPVTG5UEKhKqFUlVGpKTDxHGwWASG3Be1e25rFX8UzFYwli8iXJRSrMkw8B6/DjJjfhr6wE8ITQfYqgHxZWvVeZhPf0lmTogJTqRLimQpKVRmlqgRRVmExcXBYTAh7rOgM2OFzmDekn+ayVVybyDCvOz0UwzPdXl33DLut+Pr+Nnx1bwRXxzPY2+Fp6RmrkoKxRAkLhSpKooxSVYaiqrCaeLhtJkQ8NnSFHC31k6SoKFVXCr5J4OCwCCv+XwUwnSpjYqGEdFGEKKngeQ52M4+Ay4LOgAPtXqvu8TqxUMJCQUS1pkDgOdgtPHwOC7qCDrR5rWgmYKNQlaEoqu4xXZNVjM4XEc+UkStLUFQVTqsJHrsJ/REnwm6roWMvVaxhPldBIldFviJBlJRHv99q4mGzCIh4rIj6bIh4mvturXfbYzfVtXQ8TBSRyFVRqEiQlMWxZrcIaPfZ0BNyrDomViNX57tZ44s1pxQq2vd1WIU1TyayrcUuXazhk7tJ3J0toFiVmNd7bGbs6/Lg+EAQLqvQ8vdfGc/g07sLmi7zNrOAo31+PD8YgvnLHcp0qowffzy26vXNBuVPLJTw6d0FjCVLqMkK8/o2jw2Her0Y6vWva8ab8w9SYBkvv7onrFvolr0MPIejff6mJ6nrE1lcfphGPFNheofyHIeekAPD/QEMRl0Nf99IPI83L06v+H+X1YT//I2dyyaai6MpnLufQq5c07xnwGnB8YEAhvr8K8RKBXD5YRrn7qeQZoR4+ByL9zna729I9H5ydhzJfHXVsfbnX+t79G9RVnHmTgKXH6ZRleqP1YjHhlN7wk2179Jvvj9bwEg8j/tzBeQrku7Peu1mHOz2Yrg/AGcDc0VZlPHffndv1b/9p5d2IOy2PPr3VKqMj+8kMTpfYL4Tu9rdeGF3iLlgf/PiNCZTpbp/d1lN+Otv7GyoX69NZPDPV+KaVpi/enVnXTEnsWsBUVLwzhdzuDaRbchlPVep4bN7C7j4IIXndoXw/GAIzczzZVHGGxen8TBRZF5bqck4ezeJW9M5fOfZTkQ8VsxlK4a1RbIg4u1rs7qeZdkOK1fB765X8MnIAv7gmXbsibnXvN+qkoJb0znmLu25wdC6jqd7swW8e2MOCwX9cX6KquJhooiHiSKiPjtOD0XR5ml9J1KoSohnKoj6bMiVJfzs3CTiOsdLqijit9dmcWMqh+8e73q0m8qVJfz8/BRmMmVd98mURLx9fRa3Z3L44+HOhib7emMtV5bgsZuwUBDx/z6b1BVTOZ+r4GfnJ3Gwy4vTQzHd72pNVvH5WBoXHqSQKdWaeuZsuYYzI0lcGk3j6wfamlp8Pcn9uTzC7iBUAO9cn8OF0ZTuz96dzePeXAEv7QvjxECw7nWHe32aYleoSphIlho60749k9f8e2/YueZCB2xDb8xsuYa//WgMV8YzTcdmSYqKj+4k8HdnxlGuKQ19VpQU/J9PJxsWl1RRxN+fGcd8ror5XNWQthidL+LHH401/CxPDv5fXJjCb6/NQl3jvrs7W2DuOr+6N4L1zHny6b0F/PTcZENCt9IsWMbffPgQ1yayhjzT/bkCSqKMvz87rlvontzl/+OnE1DUxYXZT86O6xa6xxlPlvDTc5NQVCP6Po9cWcJPzo43nDzg+mR20aGpgff7w9uJpoVu2cK2JuOfPp/BZ/cWWr7Xg7nF9/RXl2YaErpHO1VVxe9vzOOTu/WfZV+nBzaz9uLkJmPBuXyxrmCMMb8YsRAgsVshdBL+5oMxJPLGiMVUqoS/+3gMlQYE742L04g3MXEsvTg/PTeF8WTJEOH4x88mUWkwtVY9Lj9M41eXZta0/x7Oa780DosJu5o0WTXDezfn8d7NeUNEXlZU/NPnM/h8LNPyvW5O5fDLS9NMc6MW0+ky/vlKHG9eai0zzXS6jLMjyZZ/0/WJLH5xYaohU+Lj3JrO4aPbCV3X2s180+bsevz+5jxG4oWW7jGxUMLb12dxY6q1RdGHtxOYTq8+B5l4Dge6tMVnZCave8yPxPOQNVY7VhOPPS2ekZPYrTAbAW9cmEJRlAy9byJfxZuXpnVv5+/PtTbgMyWxZbHOliX8+vKM4VlHbkxlNVeNrcIS+d0x17rt6u7GC/j0nvG/9f9fm8XEQqnlMTk6X2z5Wa5NZDA6X2j5PhdH05oTnl7RrDdBN7ILTxX17dZO7AzCLBg7Pf7+xlxLu1xZUXFxNG3AXKji4zv1FyBH+nxMa854Qt8Yvc3YBe7t8Kzbmf+2EbuP7yR0vSw8xyHosqDDb0fAaQHPsTviwVwBVxkmKBXAuzqDoHmOg89hQchlhdUsGN4Wv7o0rWtHZxZ4hN1WxPx2eO36vC8/upNoyaSnZVrKlLTv2xFYn9i4srhomtKDw2JC1GtDu9emy4tNUVW89XncENPfk30Z89vRH3G15KXIcxyivsX7tHttuhYXJVHC/bmiob+HAxDxWNEfcaIz4ND1nsiKivc1Kq4s7zdhRWIBDkDMb8ezOwJ47UgMP3yuB//hVB9++FwPTu0Jw2XVPndKFUXcny0YPh69djO6gw70R5zwOyy6PnN/rlDXTBt2W9HFeJdu6TBlViWFeUTyzDqm5NsWDiqipOACY0VkEnicHAziSF9gmZtzWZRx+WEaZ0aSkDRmoA9uzuNAp2dFmMCjwTVbQJbhDSfwHE4OhnC0f/kzzKQr+PBOAg/mWn9RJhZKzJ2D22bG1w9EsDvmweMhaqliDWfuJHB9Mqs5ofz+xjy+d7zT0D5cyLMFVK/rvBE7FVZlhQ6/Ha8caENnwL7s/ycXynj3xpzmwitVFHFxNGVIEmqB5/Di7jCGdwSWxRvGMxW8cWEa6ZK+hQkH4PhAEM8PhmB7bGymiiLeuDCNWcbZ4HSq1LRX5JMc6vbhq/siyzyiZRW4/DCF927Ma76nI/E8yqIMu46Fx1d2hXB5LIOg04LDvT7s6fDU9cLuDTtwtM+Pv/1oTNPs+2C+YJipvTvowCsH2lZ4WE4slPDLizPIVWpMS4mvznkZy1HlTjyPbxxq11zs3I3nNfsi4LSgK2hfNx3YFju7z8cyqGpMTjzH4TvHOvH8rtCKeB67RcDzgyF859lOzV1eoSrhi6n6qx2tvy3x+nAHTg6ufIaY34YfnOgyJIXVZ/e0D7ZdVhP+9MVe7OtYLnSLg9OM147E8PwubW/He7N5pA043H8c1kIBAAKutRc7WVFxibFw6g058aMXelcIHQB0Be340Qu96Ak5tQX1QdqQ5/3WUAzP7QquCKyP+mz47vFOcJw+E9LXD7Th5f2RZUK3NGF9/0QX0+Q3a5BT1dE+P04PRVeIjsABx/oDOD0UY+6c9TpYuKwC/vLlfvz51/ow3O9nhhvZLQK+ti+iec1M2hhP6oE2F/7kZM+qoQTdQQe+d6KL2bdTqfoLLpajSrEqYYxhyrw1re2FeXCdHFO2ldjdYAjNwS4vBtqczMF1kHFwe13DlMnale3r8DzK6FGPVw+2w2NrPpi7Kim4x3iOl/ZHmG7Ap/aGEXDWN5csxpxlDO1DUdJ2AuI4bl1qz43OFzXPfXmOw78Zimq6ufMccHooqrl4SpfElh2R+sJO7O+sf/gf8VixI+Jk3ifqs2vuMl02Ew50aTsZlKutO0LZzQJeYojJ/k4PuoMOhglPv0lVr/l+iR1t2rs2VuYfPZgFHqeHYpq7qnavFTsZz6IVW6zHUeXWdP35TpRVjGqYMDmsrwlzW4hdTVaZcWnHdJqLhhnXTaVKq07K6VKNeUamx2Rl4jkc6ml+NTS5UNbMJ+mwCMwBvjRQj/Zre6s9MPiMhiV2FtP6DGWWCXhnuwt+Hdll/A4zBhiTUavOTEd0eBT26xA7PRaFvoiLsdBqfZLfFXXr6udDjHRv8wbGqa4YhwKnucstG+Agt1fDnLp8ga7dt6w5ieWoMjJTP5j9bjwPSSNMaL1i67aV2E0ulDS9Dt02M9p0nvW0e61w20yaJq7VzmJmM9ovl8MioCOgz3a9s93dUluwJiy9eyPWRL2YRWT9+plbt/FUbqldGpmMJlPlltqjL8wWMq0d+uMCziLIuI8ktz4YOnW+IywBz5ZrDYULsVC/3MmURBm5sgQt66ER78SONqeu64IMR6Qao09YjipFUaobQ8cKJH9mnU2YwDZwUGF5BoYbzFoR9lg1Y32SeXHFJJNhxClFPLaGvn+t2qKRDB5BlwUmga+7elNUFQuFqmH5CQWGe7KeFGfrMZ4aacM2r3a/63HKqYfHbl5xvrYarADipXyezPtY1n7dHHLr8zR020ywmnjNVGKZkoh2r773TlLUxeoY2QrmclVkiiLKooySKEOUFMNDeNiLbn3PzepbPcFyLEeVW1O5FfOdpKiaxzbrGVu3rcSuzLCR+xyNNYGPYcNfzZGCtYpsJKmyWVhMyFxqwhzC8iD0Npjc2ftl+qa6bVGqGSZ2LPOVrKiQVWCtj+1Yph+f06J/LDGuLYkSZEVlCn0rfcm6t+77cGu/t7Y3kIDYYzdrxqNWdezsplJlnH+Qwj0dmXvWzYLBcfDrHGOCAfFr+zo9eOeLubrj/k68gG8eXm5ZuRvPa7bXesbWPc6WN2OyJniLqbE4NgtjtSyu8hJVGedN1gaz31ubPJ+qMIS/0fuy2o71uxuBFcMEADmDPUBX+z2sVXwjfamnvZttQ7vFmPhMowOrW1vwCIY9t5bYVWoKfn5+Cj/+eAy3pnObRuiWxsx66gTLUaUkSisyG7FNmBtTQmvrO6gwJotGVxgCz95hrDCDMF6WRicUs6m50c5y8hAabguu4bZoFo+OHfiTRVjXeyw12oYmHdvQZs+6jBKpzSR2DU1sLLO3snpf5isSfvzxGO7E85vyd21Ef7AcVR4PMJcUFfc0AufXO7ZuW4mdiTE4Gl21sa5fbWXPegZpnTw5WC9KoxMrS8StJuOyv3jtZubzz2UrGzqWFseH/jYUdYinrcmad8IGmIk2euHayNist8h960p81TJDq+G2mdEXdmJfhweHe3w42ufH8YHgmrb9Rpj/WI4qI/F/zZXJMvke3ADHlEdtt9XFjjVZVBv0ymJdv5r5iGWuEht0y65JzYkjy8RWafA5WG3hsBib6izisWpmHrkbL+DF3eE1G0tWMw8O2uf6FVGGRadLNav9BJ5bt5CKpwGxAbFjnZOv1q4P5ovMeFiTwONYvx+He/0IOFc/z7wyljbUqrEZ0HJUKYkyxpMl9IYcGNHYEW9EbN222tmxnAAazejOyiS/mtixPNUypcacTZqtVMBsi4bqsbGzmtgNFjtWDa3ZbGVN8nI+/rKyHDYaaUPWtbY1yIv6NKM3tZmiglmo1r2Ko9lNRvIJs8DjT57vxkv7InWFbqvCyqiyFIKgFV+7EbF120rsIgxvwPlcVXe5CvXL67WIruIWzIplSjaQSqksykynm/rmCO3nYMUDPs5cVrsat1ngEXRbDO3LHTpi2PSWcWkWVuxSPKs/No6VT7LNawPxryR0viessQms7gHNikM91u9Hh5993lST1S3X9ixHlfFkCTPpiqaX+DMbaMLcFmLX7rNpmhErNRkTOtMyTS6UNHdVZoFHdJWXod2nPWnlKjXdZXvGWyj/0svIxziWLOk+P7zHyN7eGbAbHujdG3LAzUiXdnM6Z0h5G61n0G4X/d/NasPuDTrI36zozcrDMkWGXNZVz74KVW0Li56EDgsFcd3j7tYLLUeVhYKoWadzo2LrtpXY8Rw7ldFn9/VV/T3HuK4jYF/VLdhrN8POMEld0lmn6noL1ayjfhucFpPGilTR9RyyouLywzRjol6bcjuHdaRL+/mFqZZqn0mKWvfMhZUhZTxZRFzHDnk2W8VYUnvyZplttxszGXZNO0UFLjMK4NbLxFIzICXdzanclm1/LUeVYlXSTHK9UbF120rsFidIH2OFnWdWiL42kdU8fGV9Dyvl0pXxjGYW8qWdwEgLLtEcgGcYYvHh7QTTvPabq7Oaq2Ce45j5CZvl2ECQOemIkoKfnJ3A2ZGk7vRM+YqE65NZ/Pz8FP7rb+4iWec8LeKxMk1Zv748o+kgIUoKfn15hrn7WKsFw9PMW5/HNdv2nS/mmOd1u+okXLcwFqTJQpW5qzt3f2FLt/9hjTyptzXmpo10TFli03ljjiWK+Nn5qaY///pwx4oVxECbExGPVfO87TdX45hJlzG8I7As5VMiv1hb7HPGTsbnMGOfRob5/Z1eZh24//vZJF7ZH8HBbt+yHWJVUnD5YdqQ86jh/gAujKbrumbXZAX/++NxnBwM4WC391GqKBXARLKEMyNJZkHGvR2eNTuItpt5vLg7jHdvaBfCrckKPridwPkHKQy0u9EdtMNlNcFuESBKCso1GamCiGRexEy63JCj0vGdQbxxof4YTeSr+F8fjOLU3ggGo+5H1RgkRcVIPI8PbiWYjk7PDgRArN62//P9Uby4J4zBqPuRt/VcroqzI0lmUVG7WcBAnYWnx2ZCQuOY4uzIAgaj7lV3KNOpMt64OG1oIoXNiFZGlXpl1DYytm5Ti122XNNVu6yuGUNRsZot8ZUD7fiHT8aZu6sr4xmYBR52i4BKTdbt7vzC7rDmGVV/mxMBp0VzUq3WZLx1JY53bswj5LLAYuJRqspI5KuGnQN47CacGAjgzEhSUyjevzWP92/Nw2YWYBF4lERJ13meWeBxcjC0pmPk2YEARuJ5ZgUCYNEt+vpExtCSQ3tjblwMOjS/P1Oq4VeXpsFxHBxmARwHFEVZs+rEEkGXdcMP8zcz2XLtUaV4i4mHoqi6z5qH+/11U8p1BuyaZ+fzuQr++7sPcLjHh4DLAoHnkC3V8GC+sKbnxJuJJUeVi6Mp3Z85uEnG8rYJ4ukLOzDcr2+1XJMV5Mo13UJ3oMvLnJw4AC/vj+i6X7UmYzpdxsNEEXO5iuEH3icHQ4j59K20KjUZuUpN92Ty6sE23Ql7m4UD8MfHOhvKKWo0p4diukIDVFVFUZRQqEq6hM4k8Pj2sY4tGRS+FoiSontsuqwmPDsQrPv33TG2A0quXMNHdxL45aVp/OLCFN69MbdthG4JVkaVJ9/VzWDC3FZit7i7a2uoBIseoj47vnkoquvawagbu1oo0QODBo7Ac/ju8U74HcaK0lCvj3k+ahQuq4AfPt9j+G/QS8BpxrePdRiavonnOPzhoXZEPFYQy7Ga+Jbb+puH2jWTTAy0uXRXFNDqw28f62Q6pD3NsDKqPM5Gx9ZtW7HjOeB7x7tw0KCVxmDUjX9/sqehCtmvD3cg5m/Ofr2/04sjvcY8u9tmwo9e6Fk1LrAZTu0J4w91ir5R+Bxm/NmpXl3xd2tjLXDi332lGw5L6y+zxcQvjs0uMl+uOsF6bPi3J7qaFryX9y2en7L4o6OxprPW8ByH00NR7Im5sb/Ls6X747DOeWgzmeO3XS4ingNeG4ri9eEOZsxWPZxWE1490IbvPtsJc4M1ZcwChx+c6Gp4h3e0z4/XjsRQNrDopMtmwp+e6sMLg6GmJ5E2jw3fP9G95ud09bBbBPzgRBdeH+7QVYhUD+1em+5UZ11BO/7i5X7sayGGaGe7G392qo9ZzHU7ky/X0Bty4PsnuuC1N1ISi8e3hmI4sTOoe9fygxPdcFobW8DYzcKyxcrhHv+W7g9WRpWl3fhGx9Y9jmm7vjz7OjzYHfPg2ngGX0xmMZkqa56p8ByHjoAdu6NuHOnzNyxyT07Q3zveiRtTOVx4kNKMHeoJOXByMIy+8KLZoNlUYVri/+KeMIZ3BHBxNIXb03lmgLvFxKMn5MSBLk9Lk7zR/bmvw4O7swXcnFoMLNdb889i4tEZsKM76MDumIeZaeZJHBYBrw934OTuEC48SONuPM8MUHbbzOiLODHc50fMT5lSmGL3ZcHknpADf/HyDpwdSeL6ZLZumIFZ4LGvw4MX94QbNqN1Be34j1/rx9mRJK6MZzQTGzssJhzs9uD5XaFl6fHavFZEfXbNQOunGRPPYX+nB5c0vNQ3Q2zd43CqukXD/RukUlMWcyvmqyjXZEiyCptZgMMqwGU1oTNgX7OkvJlSDdPpMgoVCWVRhlng4Xea0R10wPVEleir4xm8dSWuuQP8xjPtLU8s8UwFmaKISk2BChUOy6Lbvs9hRsxvx9PgP5Eq1pDMVZEt11D5sk+XkitbTDx8DjP8Lgt8DrPh2V6SeRFzuQryZQlVSQbPcXBYBDisJoTc1oYFdTvwP94b1aw48F++uWtFvtWZdAWJfBXFqoSarMBuFhD2WNEZcLS0IF1CUYGpVAnzuSpKVRmKqsLyZfX2iMeGiNeK7epK9LPzU5pxvz862bspQg62/c7uSWxmHr0hBzMd1Frgc5h1exay4niMqDTgtpngbnc99X0acJo3LGFvyG1Zc6/U7UZNVvHk1Bnz29Z0Z8xzi9mAKMB/5eZAywt1s8TWLetL6rani2ReOxjZYaX1C0EQa8tVhnn34CaMEyWxe8oYY2QvCZPbOkEQa0hJlPHJ3fpJKTiO2zSxdSR2G0ShIrX0+Vszec0MLGaBJ3MLQRBrhqyoePPiNEpifUe5Xe2uTRNb9zhk81pH/uGTCZhNPA52ebEr6mrIhXomXcFvNRxTgMUATkq8QRDEWjCbrT7KIazF8U2a15XEbh1RAcyky5hJl/H2dcDnsKA75EDYbUHAZUHAaVnMRWniYRY4VGoK5nMV3JrO49pEpm7ZmSVO7gpSIxME0RKJvIg3Lkwh4Fqcj2RFRSJXxVyOXbpqZ5tr01qXSOw2kExJRGZCNOReg1E3OgJU7JMgiNZQVBWJfFV3QeklzAKPV1sMe1pL6MxuCxByWXF6KEYNQRDEhvHakRj8G5icnXZ2W5yA04Lvf6ULdjOtWwiCWH84jsMfHGzDnph7Uz8nid1TzFCvH68caDMkUwRBEESjOK0mnD4cxc6nIAkFid068kdHYrg1ncO92ULD9vAlbGYBB7q8ONLnp5RTBEFsCDazgEM9XpwcDGuWTSKx26ZEfTZEfTa8tC+CqqQs5vXLVZAt15ArL+bFrMkqZFkBOA42Mw+riYfDKqDda0PMb0eb10bhBcSWJOiygOfqD24qaLs+eOxmvLA7hGReRLEqQawp4HkOdouAkNuKrqAdA22uTZXkWQ+UCJogCILY8pBXA0EQBEFiRxAEQRAkdgRBEARBYkcQBEEQJHYEQRAEQWJHEARBECR2BEEQBEFiRxAEQZDYEQRBEASJHUEQBEGQ2BEEQRAEiR1BEARBkNgRBEEQBIkdQRAEQZDYEQRBEASJHUEQBEFiRxAEQRBbkn8BLSS9H0WbjkcAAAAASUVORK5CYII="
+                                         alt="Image"/>
+                                </t>
+                            </div>
+                            <div class="info text-center cover-name">
+                                <div class="name apply">
+                                    <h1 class="text-dark" style="margin-top:-30px" t-esc="cards.get('name')"/>
+                                </div>
+                            </div>
+                            <div class="text-center cover-title">
+                                <p t-esc="cards.get('title')"/>
+                            </div>
+                        </div>
+                        <div class="container mt-2" style="position:relative">
+                            <div class="row">
+                                <div class="cover col-xs-7" style="margin-left:13px">
+                                    <a class="text-decoration-none" t-att-href="'tel:' + cards.get('work_phone')">
+                                        <p class="font-weight-bold" style="color: black; text-decoration:none">
+                                            Mobile:
+                                            <span class="font-weight-normal" t-esc="cards.get('phone')"/>
+                                        </p>
+                                    </a>
+                                    <a class="text-decoration-none" t-att-href="'mailto:' + cards.get('email')">
+                                        <p class="font-weight-bold" style="color: black; text-decoration:none">
+                                            Email:
+                                            <span class="font-weight-normal" t-esc="cards.get('email')"/>
+                                        </p>
+                                    </a>
+                                </div>
+                                <div class="cover-qr col-xs-4">
+                                    <div class="image d-flex justify-content-center align-items-center">
+                                        <img class="image-qr" t-att-src="image_data_uri(cards.get('qr_code_img'))"
+                                             alt="Image Qr"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="wrapper-social">
+                                <div class="uk-panel">
+                                    <div>
+                                        <div class="uk-grid uk-grid-small uk-grid-width-1-6">
+                                            <t t-foreach="cards.get('social')" t-as="social">
+                                                <div t-if="social.get('name')">
+                                                    <a t-att-class="social.get('name') + ' '"
+                                                       t-att-href="social.get('social')"
+                                                       target="_blank">
+                                                        <img t-att-src="'/s_card/static/description/icon/' + social.get('name') + '.png'"
+                                                             alt="Social Icon"/>
+                                                    </a>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <t t-if="cards.get('user_id').id != cards.get('user_id_current')">
+                            <div class="row" style="justify-content: space-around;">
+                                <button class="cover-add-contact btn" type="button" id="add-contact"
+                                        t-att-card_id="cards.get('id')"
+                                        style="height: 45px; border-radius: 7px; width:60%; background-color: #005BAC; color: white;">
+                                    <p style="font-size: 20px;">
+                                        <i class="uk-icon-bookmark" style="font-size: 20px;"/>
+                                        Lưu danh bạ
+                                    </p>
+                                </button>
+                                <button class="cover-share btn"
+                                        style="border-radius: 7px;width:15%;height: 45px;background-color: #D9D9D9;">
+                                    <a href="#" id="share" data-url="#"
+                                       data-sapo="Danh thiếp">
+                                        <i class="uk-icon-share-alt" style="font-size: 20px;color: black"/>
+                                    </a>
+                                </button>
+                                <button class="cover-user-plus btn" type="button" id="add-follow"
+                                        t-att-user_id="cards.get('user_id').id"
+                                        style="border-radius: 7px;width:15%;height: 45px;background-color: #D9D9D9;">
+                                    <i class="uk-icon-user-plus" style="font-size: 20px;"/>
+                                </button>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="row" style="justify-content: space-around;">
+                                <button class="cover-add-contact btn" type="button" id="show-contact"
+                                        t-att-user_id="cards.get('user_id').id"
+                                        t-att-card_id="cards.get('id')"
+                                        style="height: 45px; border-radius: 7px; width:60%; background-color: #005BAC; color: white;">
+                                    <a href="#view-follow" data-uk-modal="{center:true, bgclose:false}">
+                                        <p style="font-size: 20px;color: white;">
+                                            <i class="uk-icon-bookmark" style="font-size: 20px;"/>
+                                            <span>Xem danh bạ</span>
+                                        </p>
+                                    </a>
+                                </button>
+                                <button class="cover-share btn"
+                                        style="border-radius: 7px;width:15%;height: 45px;background-color: #D9D9D9;">
+                                    <a href="#" id="share" data-url="#"
+                                       data-sapo="Danh thiếp">
+                                        <i class="uk-icon-share-alt" style="font-size: 20px;color: black"/>
+                                    </a>
+                                </button>
+                                <button class="cover-edit-plus btn"
+                                        style="border-radius: 7px;width:15%;height: 45px;background-color: #D9D9D9;">
+                                    <a href="#qrcode-modal" data-uk-modal="{center:true, bgclose:false}">
+                                        <i class="uk-icon-ellipsis-v" style="font-size: 20px;color: black"/>
+                                    </a>
+                                </button>
+                            </div>
+                        </t>
+                    </div>
+                    <div class="line-with-shadow mt-3 mb-3"/>
+                    <nav class="container" id="pr-subnav">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a href="#nav-info" class="nav-item nav-link" id="nav-info-tab" data-toggle="tab"
+                               role="tab" aria-controls="nav-info" aria-selected="true" onclick="addActiveClass(this)">
+                                Giới thiệu
+                            </a>
+                            <a href="#nav-video" class="nav-item nav-link" id="nav-video-tab" data-toggle="tab"
+                               role="tab" aria-controls="nav-video" aria-selected="true" onclick="addActiveClass(this)">
+                                Video
+                            </a>
+                            <a href="#nav-image" class="nav-item nav-link" id="nav-image-tab" data-toggle="tab"
+                               role="tab" aria-controls="nav-image" aria-selected="true" onclick="addActiveClass(this)">
+                                Hình ảnh
+                            </a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-info" role="tabpanel"
+                             aria-labelledby="nav-info-tab">
+                            <div class="container introduce ">
+                                <div class="company name font-weight-bold mt-2 mb-2" style="font-size:20px;">
+                                    <p t-esc="cards.get('company')"/>
+                                    <t t-if="cards.get('user_id').id == cards.get('user_id_current')">
+                                        <a href="#edit-intro"
+                                           data-uk-modal="{center:true, bgclose:false}">
+                                            <i class="uk-icon-pencil"
+                                               style="font-size: 18px; position: absolute; right: 9px; margin-right: 5px;margin-top:-26px; color:#8B8E8C"/>
+                                        </a>
+                                    </t>
+                                </div>
+                                <div>
+                                    <a class="text-dark text-decoration-none"
+                                       t-att-href="'tel:'+ cards.get('work_phone')">
+                                        <p class="font-weight-bold ">Hotline:
+                                            <span class="font-weight-normal" t-esc="cards.get('work_phone')"/>
+                                        </p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <p class="font-weight-bold">
+                                        <t t-foreach="cards.get('globe')" t-as="globe">
+                                            <a class="text-dark text-decoration-none"
+                                               t-att-href="'https://www.google.com/maps/search/?api=1&amp;query=' + globe.get('globe')"
+                                               target="_blank">
+                                                <span class="font-weight-bold" t-esc="globe.get('name') + ':'"/>
+                                                <span class="font-weight-normal" t-esc="globe.get('globe')"/>
+                                            </a>
+                                            <br/>
+                                        </t>
+                                    </p>
+                                </div>
+                                <div>
+                                    <a class="text-dark text-decoration-none"
+                                       t-att-href="'mailto:'+ cards.get('email')">
+                                        <p class="font-weight-bold">Email:
+                                            <span class="font-weight-normal" t-esc="cards.get('email')"/>
+                                        </p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <p class="font-weight-bold">Website:
+                                        <t t-foreach="cards.get('link')" t-as="link">
+                                            <a class="" t-att-href="link.get('link')" target="_blank">
+                                                <span>
+                                                    <t t-esc="link.get('name')"/>
+                                                </span>
+                                            </a>
+                                        </t>
+                                    </p>
+                                </div>
+                                <div class="content mt-2" style="text-align: justify;">
+                                    <span class="formatted-text" t-raw="cards.get('content')"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
+                            <div id="video">
+                                <div class="wrapper">
+                                    <div class="uk-panel">
+                                        <div class="uk-panel-title">
+                                            <span>Video</span>
+                                            <i class="uk-icon-youtube-play"/>
+                                        </div>
+                                        <div class="content">
+                                            <t t-if="cards.get('video')">
+                                                <t t-set="youtube_url" t-value="cards.get('video')"/>
+                                                <t t-set="youtube_video_id"
+                                                   t-value="'https://www.youtube.com/embed/' + youtube_url.split('?v=')[-1]"/>
+                                                <iframe width="560" height="315" t-att-src="youtube_video_id" title=""
+                                                        frameborder="0" allowfullscreen=""/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab">
+                            <div>
+                                <a href="#edit-image" data-uk-modal="{center:true, bgclose:false}">
+                                    <i class="uk-icon-trash"
+                                       style="font-size: 18px; position: absolute; left: 434px;margin-top:18px; color:#8B8E8C"/>
+                                </a>
+                                <a href="#add-image" data-uk-modal="{center:true, bgclose:false}">
+                                    <i class="uk-icon-upload"
+                                       style="font-size: 18px; position: absolute;left: 404px;margin-top:18px; color:#8B8E8C"/>
+                                </a>
+                            </div>
+                            <div id="photo">
+                                <div class="wrapper">
+                                    <div class="uk-panel">
+                                        <div class="uk-panel-title" style="height: fit-content;">
+                                            <span>Thư viện hình ảnh</span>
+                                            <i class="uk-icon-camera-retro"/>
+                                        </div>
+                                        <div class="content">
+                                            <div class="uk-grid uk-grid-small uk-grid-width-1-3">
+                                                <t t-foreach="cards.get('image')" t-as="image">
+                                                    <div>
+                                                        <div class="image">
+                                                            <a t-attf-href="/media/#{image.get('res_id')}/#{image.get('name')}"
+                                                               data-uk-lightbox="{group:'gallery'}">
+                                                                <img t-att-src="image_data_uri(image.get('datas'))"
+                                                                     alt=""/>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                    <section id="introduce-section" class="hidden">-->
+                    <!--                        <div class="container introduce ">-->
+                    <!--                            <div class="company name font-weight-bold mt-2 mb-2" style="font-size:20px;">-->
+                    <!--                                <p t-esc="cards.get('company')"/>-->
+                    <!--                                <t t-if="cards.get('user_id').id == cards.get('user_id_current')">-->
+                    <!--                                    <a href="#edit-intro"-->
+                    <!--                                       data-uk-modal="{center:true, bgclose:false}">-->
+                    <!--                                        <i class="uk-icon-pencil"-->
+                    <!--                                           style="font-size: 18px; position: absolute; right: 9px; margin-right: 5px;margin-top:-26px; color:#8B8E8C"/>-->
+                    <!--                                    </a>-->
+                    <!--                                </t>-->
+                    <!--                            </div>-->
+                    <!--                            <div>-->
+                    <!--                                <a class="text-dark text-decoration-none" t-att-href="'tel:'+ cards.get('work_phone')">-->
+                    <!--                                    <p class="font-weight-bold ">Hotline:-->
+                    <!--                                        <span class="font-weight-normal" t-esc="cards.get('work_phone')"/>-->
+                    <!--                                    </p>-->
+                    <!--                                </a>-->
+                    <!--                            </div>-->
+                    <!--                            <div>-->
+                    <!--                                <p class="font-weight-bold">-->
+                    <!--                                    <t t-foreach="cards.get('globe')" t-as="globe">-->
+                    <!--                                        <a class="text-dark text-decoration-none"-->
+                    <!--                                           t-att-href="'https://www.google.com/maps/search/?api=1&amp;query=' + globe.get('globe')"-->
+                    <!--                                           target="_blank">-->
+                    <!--                                            <span class="font-weight-bold" t-esc="globe.get('name') + ':'"/>-->
+                    <!--                                            <span class="font-weight-normal" t-esc="globe.get('globe')"/>-->
+                    <!--                                        </a>-->
+                    <!--                                        <br/>-->
+                    <!--                                    </t>-->
+                    <!--                                </p>-->
+                    <!--                            </div>-->
+                    <!--                            <div>-->
+                    <!--                                <a class="text-dark text-decoration-none" t-att-href="'mailto:'+ cards.get('email')">-->
+                    <!--                                    <p class="font-weight-bold">Email:-->
+                    <!--                                        <span class="font-weight-normal" t-esc="cards.get('email')"/>-->
+                    <!--                                    </p>-->
+                    <!--                                </a>-->
+                    <!--                            </div>-->
+                    <!--                            <div>-->
+                    <!--                                <p class="font-weight-bold">Website:-->
+                    <!--                                    <t t-foreach="cards.get('link')" t-as="link">-->
+                    <!--                                        <a class="" t-att-href="link.get('link')" target="_blank">-->
+                    <!--                                            <span>-->
+                    <!--                                                <t t-esc="link.get('name')"/>-->
+                    <!--                                            </span>-->
+                    <!--                                        </a>-->
+                    <!--                                    </t>-->
+                    <!--                                </p>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="content mt-2" style="text-align: justify;">-->
+                    <!--                                <span class="formatted-text" t-raw="cards.get('content')"/>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </section>-->
+                    <!--                    <section id="video-section" class="hidden">-->
+                    <!--                        <div id="video">-->
+                    <!--                            <div class="wrapper">-->
+                    <!--                                <div class="uk-panel">-->
+                    <!--                                    <div class="uk-panel-title">-->
+                    <!--                                        <span>Video</span>-->
+                    <!--                                        <i class="uk-icon-youtube-play"/>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="content">-->
+                    <!--                                        <t t-if="cards.get('video')">-->
+                    <!--                                            <t t-set="youtube_url" t-value="cards.get('video')"/>-->
+                    <!--                                            <t t-set="youtube_video_id"-->
+                    <!--                                               t-value="'https://www.youtube.com/embed/' + youtube_url.split('?v=')[-1]"/>-->
+                    <!--                                            <iframe width="560" height="315" t-att-src="youtube_video_id" title=""-->
+                    <!--                                                    frameborder="0" allowfullscreen=""/>-->
+                    <!--                                        </t>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </section>-->
+
+                    <!--                    <section id="image-section" class="hidden">-->
+                    <!--                        <div>-->
+                    <!--                            <a href="#edit-image" data-uk-modal="{center:true, bgclose:false}">-->
+                    <!--                                <i class="uk-icon-trash"-->
+                    <!--                                   style="font-size: 18px; position: absolute; left: 434px;margin-top:18px; color:#8B8E8C"/>-->
+                    <!--                            </a>-->
+                    <!--                            <a href="#add-image" data-uk-modal="{center:true, bgclose:false}">-->
+                    <!--                                <i class="uk-icon-upload"-->
+                    <!--                                   style="font-size: 18px; position: absolute;left: 404px;margin-top:18px; color:#8B8E8C"/>-->
+                    <!--                            </a>-->
+                    <!--                        </div>-->
+                    <!--                        <div id="photo">-->
+                    <!--                            <div class="wrapper">-->
+                    <!--                                <div class="uk-panel">-->
+                    <!--                                    <div class="uk-panel-title" style="height: fit-content;">-->
+                    <!--                                        <span>Thư viện hình ảnh</span>-->
+                    <!--                                        <i class="uk-icon-camera-retro"/>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="content">-->
+                    <!--                                        <div class="uk-grid uk-grid-small uk-grid-width-1-3">-->
+                    <!--                                            <t t-foreach="cards.get('image')" t-as="image">-->
+                    <!--                                                <div>-->
+                    <!--                                                    <div class="image">-->
+                    <!--                                                        <a t-attf-href="/media/#{image.get('res_id')}/#{image.get('name')}"-->
+                    <!--                                                           data-uk-lightbox="{group:'gallery'}">-->
+                    <!--                                                            <img t-att-src="image_data_uri(image.get('datas'))"-->
+                    <!--                                                                 alt=""/>-->
+                    <!--                                                        </a>-->
+                    <!--                                                    </div>-->
+                    <!--                                                </div>-->
+                    <!--                                            </t>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </section>-->
+                    <div id="qrcode-modal" class="uk-modal" aria-hidden="true"
+                         style="display: none; overflow-y: scroll;">
+                        <div class="uk-modal-dialog">
+                            <a href="" class="uk-modal-close uk-close"/>
+                            <div class="name">Mã QR</div>
+                            <p>Chia sẻ trang của bạn với bất kỳ ai bằng cách yêu cầu họ quét mã QR này</p>
+                            <div class="image">
+                                <img t-att-src="image_data_uri(cards.get('qr_code_img'))" alt="Image" id="qrCodeImage"/>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="downloadQRCode()">
+                                Tải xuống
+                            </button>
+                            <div class="link uk-form">
+                                <p>
+                                    <strong>Sao chép &amp; chia sẻ</strong>
+                                </p>
+                                <input type="text" t-att-value="cards.get('url')" class="input-copy" readonly="true"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="edit-info" class="uk-modal">
+                        <div class="uk-modal-dialog">
+                            <a href="" class="uk-modal-close uk-close"/>
+                            <form id="edit-info-form" enctype="multipart/form-data">
+                                <div class="container">
+                                    <div>
+                                        <div class="d-flex justify-content-center mb-4">
+                                            <t t-if="cards.get('avatar')">
+                                                <img id="selectedAvatar"
+                                                     t-att-src="image_data_uri(cards.get('avatar'))"
+                                                     class="rounded-circle"
+                                                     style="width: 200px; height: 200px; object-fit: cover;"
+                                                     alt="example placeholder"/>
+                                            </t>
+                                            <t t-else="">
+                                                <img id="selectedAvatar"
+                                                     src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QBqRXhpZgAASUkqAAgAAAADABIBAwABAAAAAQAAADEBAgARAAAAMgAAAGmHBAABAAAARAAAAAAAAABTaG90d2VsbCAwLjMwLjE0AAACAAKgCQABAAAAmwEAAAOgCQABAAAAmgEAAAAAAAD/4Qn0aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA0LjQuMC1FeGl2MiI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIiB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIgZXhpZjpQaXhlbFhEaW1lbnNpb249IjQxMSIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjQxMCIgdGlmZjpJbWFnZVdpZHRoPSI0MTEiIHRpZmY6SW1hZ2VIZWlnaHQ9IjQxMCIgdGlmZjpPcmllbnRhdGlvbj0iMSIvPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw/eHBhY2tldCBlbmQ9InciPz7/2wBDAAMCAgMCAgMDAwMEAwMEBQgF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A/8AQGrWl/ERE/hZ5a33j9aSlb7x+tJXsHEFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU4fdptGQBzR0A+hYf9Sn0FPqODmFMegqSvDe56AUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigArivir/yL8P8A18D/ANAau1rivir/AMi/D/18D/0Bq1pfxERP4WeWt94/WkpW+8frSV7BxBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAGTggcHHB+nNe2eGdMtbbQ7Hy4IwHhR2+UZJIyefxrxT+gz+fFe2+DZnn8L6a0n3hEF/Ikf0rjxV+VG9Lc2ExtGOntTqKK846QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACs3WNJtdahNveQieFTuCEkc4I7H3rSop7Cep494/0O10PU4Bar5UMybymSQCD6n61zB6nOMg44rs/ilOX8QQRHpHAMf8AAif8K4w9a9ei24Js45qzsFFFFakBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAoAIJ7gfz4r2H4fzibwtZgnJUvGR6YY147XqfwuuTNoE8Z/5YzkD8QD/AFrkxK9y5rS+I7RTlQfXmlpB0pa806wooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiio2IDfjmgDyT4kyeb4rmT7uyFFz68E/1rljySfXmtnxjOLjxPqLDospj/AO+Rt/pWNXtU9II4ZO7YUUUVZIUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFd18Kr3bfXlmekiCRfqOD+hrhauaRqT6RqNveR8tC+SPUY5H5VnUjzxcSou0kz3sdKWqul38OqafBdQNuhlXcp/pVqvG2O1BRRRQMKKKKACiiigAooooAKKKKACiiigAooooAKKKKACoZ5RAjyH7qAs30x/8AWqauO+ImuJpumPapJtuLv5cL1VR95vywKqMXJpIluyueX392b++uLk/8tZGcfQnIqCj+vNFe2lZWRwhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAHoXwrvP3d9as3OVlVf9no39K9EjzsGeT3rxv4f3htPFNqCdqzBoj78ZH6rXskeSik9SMmvKxCtU9Trp/COooornNQooooAKKKKACiiigAooooAKKKKACiiigAooooAhkcKxyQAOTn/AD9a8M13UH1TV7q5MhcPK3l56+Xnj9MV6/4tvl03Qr6c9TEUH1PA/ma8QGNox0xxXdhY7yOaq9kL075ooorvMAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigC7o16thqtncsMiCRXP0zXvKYKjHTtXz1ztIH1/+vXsvgjVxq2gWzFgZYh5Mi+hHT9MVw4qO0kdFLqjoqKRTlQfWlrgOgKKKKACiiigAooooAKKKKACiiigAooooAKKKjbqfwoA4j4p6h5Nna2Y/5buXf/dUZ/nXmRyevWt7xtqg1TxFO8f+rhAhX6KTn9c1g4wAPYV69GPLBHFN3kwooorYgKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK6TwP4gGh6l5c7YtLnCuT0Q5wH/AD4/GubpeoIycDkj26cVM4qUbMadnc+hY/uDjHtTq8+8CeMhKkemXsg8xflhlf8AiH90+/p7V6AOlePODg7M7YyUldC0UUVBQUUUUAFFFFABRRRQAUUUUAFFFFABXOeNNdGh6ZIVI+0TgxxDvkjk/gOfxrdlcRkkjj+fGf6V4j4j12XxFqTXLDbEPlij9FHNb0aftJeSMpy5UZZ69c+570UE559eeKK9Y5AooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKANbwnAbnxLpij+GcP/3z81e4r0rx34dxeb4qtzjPlxu/04x/7NXsKDaoHpxXm4n40jqpfCOooorkNgooooAKKKKACiiigAooooAKKKKAKmqf8g66/wCuTfyNeAr90fSvftU/5B11/wBcm/ka8BX7o+lehhdmc1XdC0UUV2mAUUUUAFFFFABRRRQAUUUUAFFFFABR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OJj0UEknJ5/L+lFbmYUUUUgClHUd+wAGTVrS9MutYu1t7SIzSHqOyj/aPYV6j4b8C2miBbiYi5vMfef7qeyisalWNPcuMXLY43QPh9f6sVlus2FuehdMyMPYdB+NekaL4csdCixawBHPDSNyzfU1qJ90U6vOnVlU3OmMFERelLRRWJoFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUyRQ4KsAQRjB5zT6KAOO174eWOokvaYspuuEUFGPuD0/CvPNa8N32gyf6VCVjzhZhyh+p7V7pUFzBHcIySIsikYKuNwP4V0U68oaPVGcoJnz9gjqSfcjFFdx4x8CGzD32nIzwjmS3U5K+4rh8575969KE41FeJyyi4uzPb/Dvh+18P2IhhGXbmWQ9XNbC9OmKRDlQadXittu7O7YKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAY/Py8c9j3Fcjf/AA20q8vJZh5sW85Kxn5Qe9djUbhtxx0pqUo/CTJKS1JKKKKRQUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/2Q=="
+                                                     class="rounded-circle"
+                                                     style="width: 200px; height: 200px; object-fit: cover;"
+                                                     alt="example placeholder"/>
+                                            </t>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="btn btn-primary btn-rounded btn-sm"
+                                                 style="color: #fff;background-color: #005bac;border-color: #005bac;">
+                                                <label class="form-label text-white m-1" for="update_contact1">
+                                                    Choose file
+                                                </label>
+                                                <input type="file" class="form-control d-none" id="update_contact1"
+                                                       onchange="displaySelectedImage(event, 'selectedAvatar')"
+                                                       name="avatar" required="True"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Field">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact2">
+                                                Name *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact2" type="text"
+                                                       class="form-control" name="name"
+                                                       required="True" t-att-value="cards.get('name')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Field">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact3">
+                                                Title *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact3" type="tel"
+                                                       class="form-control"
+                                                       name="title" required="True"
+                                                       t-att-value="cards.get('title')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Phone">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact4">
+                                                Phone *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact4" type="tel"
+                                                       class="form-control"
+                                                       name="phone" required="True"
+                                                       t-att-value="cards.get('phone')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Email">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact5">
+                                                Email *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact5" type="email"
+                                                       class="form-control"
+                                                       name="email" required="True"
+                                                       t-att-value="cards.get('email')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px">
+                                                Logo Company *
+                                            </label>
+                                        </div>
+                                        <div class="mb-4 d-flex justify-content-center">
+                                            <t t-if="cards.get('logo_company')">
+                                                <img id="selectedLogo"
+                                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbsAAABYCAYAAABszlmGAAAAiXpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjaVY7JDcUwCETvVJES2MxSThIlUjr45X8cW4r8DjCD0ABcv+eGrUOooM3D0gwLTU3eSwQOBJEYqfeqg9mFSnHZ6UF4CMtw1G9RFReaWNjt6m7NTju50vkSeSuJwrvVw/or+QUdx1SyzlusB+APBUYtSfK6su0AAACAelRYdFJhdyBwcm9maWxlIHR5cGUgaXB0YwAAeNqNjjsOAzEIRHtOsUfgMwZ8HryW0qXI/RXWReoMEhrNPCHo9f4UXUfJZAnFxGL0/ASTYo1kFkZhI7C103ZrMAT3mMq6lE0e0if9i0L6fg7z9B2I8OHldRrvJshYb7Ozxfon+gK8Cyd96pO5PgAADS9pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDQuNC4wLUV4aXYyIj4KIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgIHhtbG5zOkF0dHJpYj0iaHR0cDovL25zLmF0dHJpYnV0aW9uLmNvbS9hZHMvMS4wLyIKICAgIHhtbG5zOnBkZj0iaHR0cDovL25zLmFkb2JlLmNvbS9wZGYvMS4zLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOmFjZHNlZT0iaHR0cDovL25zLmFjZHNlZS5jb20vaXB0Yy8xLjAvIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgcGRmOkF1dGhvcj0iSMO5bmcgTmd1eeG7hW4gWHXDom4iCiAgIHhtcDpDcmVhdG9yVG9vbD0iQ2FudmEiCiAgIHBob3Rvc2hvcDpIZWFkbGluZT0iTE9HTyBDT01QQU5ZIC0gMSIKICAgYWNkc2VlOmNhcHRpb249IkxPR08gQ09NUEFOWSAtIDEiCiAgIGV4aWY6UGl4ZWxYRGltZW5zaW9uPSI0NDMiCiAgIGV4aWY6UGl4ZWxZRGltZW5zaW9uPSI4OCIKICAgdGlmZjpJbWFnZVdpZHRoPSI0NDMiCiAgIHRpZmY6SW1hZ2VIZWlnaHQ9Ijg4IgogICB0aWZmOk9yaWVudGF0aW9uPSIxIj4KICAgPGRjOnRpdGxlPgogICAgPHJkZjpBbHQ+CiAgICAgPHJkZjpsaSB4bWw6bGFuZz0ieC1kZWZhdWx0Ij5MT0dPIENPTVBBTlkgLSAxPC9yZGY6bGk+CiAgICA8L3JkZjpBbHQ+CiAgIDwvZGM6dGl0bGU+CiAgIDxBdHRyaWI6QWRzPgogICAgPHJkZjpTZXE+CiAgICAgPHJkZjpsaQogICAgICBBdHRyaWI6Q3JlYXRlZD0iMjAyMy0xMi0xMyIKICAgICAgQXR0cmliOkV4dElkPSI3MTczZDExYS0yY2E3LTQzYjItYWNlMy02ZTUxZTFkMDQ1YjgiCiAgICAgIEF0dHJpYjpGYklkPSI1MjUyNjU5MTQxNzk1ODAiCiAgICAgIEF0dHJpYjpUb3VjaFR5cGU9IjIiLz4KICAgIDwvcmRmOlNlcT4KICAgPC9BdHRyaWI6QWRzPgogIDwvcmRmOkRlc2NyaXB0aW9uPgogPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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"
+                                                     alt="example placeholder" style="width: 140px;"/>
+                                            </t>
+                                        </div>
+                                        <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+                                            <div class="btn btn-primary btn-rounded btn-sm"
+                                                 style="color: #fff;background-color: #005bac;border-color: #005bac;">
+                                                <label class="form-label text-white m-1" for="update_contact6">
+                                                    Choose file
+                                                </label>
+                                                <input type="file" class="form-control d-none" id="update_contact6"
+                                                       onchange="displaySelectedImage(event, 'selectedLogo')"
+                                                       name="logo_company" required="True"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Social Entries">
+                                        <t t-set="id" t-value="1"/>
+                                        <t t-foreach="cards.get('social')" t-as="social">
+                                            <div class="entry-container-social" id="socialContainer"
+                                                 data-entry-class="social-entry"
+                                                 style="clear: both;">
+                                                <div class="social-entry"
+                                                     style="background-color: #f2f2f2; padding: 10px; border-radius: 10px;position: relative;margin-bottom: 10px;">
+                                                    <div style="display: flex;justify-content: center;">
+                                                        <label class="col-md-12 col-12">
+                                                            Social
+                                                            <t t-esc="id"/>
+                                                            *
+                                                        </label>
+                                                        <!--                                                        <div class="form-group col-md-1 col-1 d-flex justify-content-center align-items-center">-->
+                                                        <!--                                                            <button type="button" class="btn btn-close btn-sm"-->
+                                                        <!--                                                                    style="position: absolute; top: 8px; right: 26px; transform: translate(50%, -50%); color: red;"-->
+                                                        <!--                                                                    onclick="removeAddressEntry(this, 'socialContainer')">-->
+                                                        <!--                                                                x-->
+                                                        <!--                                                            </button>-->
+                                                        <!--                                                        </div>-->
+                                                    </div>
+                                                    <div class="entry-inputs row"
+                                                         style="display: flex;justify-content: center;">
+                                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                                            <div class="col-sm">
+                                                                <input type="text" class="form-control"
+                                                                       t-att-name="'social_name_' + str(id)"
+                                                                       required="True"
+                                                                       t-att-value="social.get('name')"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                                            <div class="col-sm">
+                                                                <input type="text"
+                                                                       t-att-name="'social_' + str(id)"
+                                                                       class="form-control"
+                                                                       t-att-value="social.get('social')"
+                                                                       required="True"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <t t-set="id" t-value="id+1"/>
+                                        </t>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn btn btn-light btn-sm"
+                                                    style="margin: 6px 0px;background-color: #f2f2f2;"
+                                                    onclick="addAddressEntry('entry-container-social', 'socialContainer', 'social-entry', 'social_name', 'social', 'Name', 'Social', 'e.g. https://zalo.me/ + phone', 'facebook, zalo, twitter,...')">
+                                                + Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-primary btn-lg s_website_form_send"
+                                                style="color: #fff;background-color: #005bac;border-color: #005bac;"
+                                                t-att-card_id="cards.get('id')"
+                                                id="update-info-btn">
+                                            Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="edit-intro" class="uk-modal">
+                        <div class="uk-modal-dialog">
+                            <a href="" class="uk-modal-close uk-close"/>
+                            <form id="edit-intro-form" enctype="multipart/form-data">
+                                <div class="container">
+                                    <div data-type="char" data-name="Field">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact7">
+                                                Company *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact7" type="text"
+                                                       class="form-control" name="company"
+                                                       required="True" t-att-value="cards.get('company')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Work Phone">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact8">
+                                                Work Phone *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact8" type="tel"
+                                                       class="form-control"
+                                                       name="work_phone" required="True"
+                                                       t-att-value="cards.get('work_phone')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Email">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact9">
+                                                Email *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact9" type="email"
+                                                       class="form-control"
+                                                       name="email" required="True"
+                                                       t-att-value="cards.get('email')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Field">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact10">
+                                                Content *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact10" type="text"
+                                                       class="form-control"
+                                                       name="content" required="True"
+                                                       t-att-value="cards.get('content')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Field">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact11">
+                                                URL Company *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact11" type="text"
+                                                       class="form-control" name="url_company"
+                                                       required="True" t-att-value="cards.get('url_company')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Field">
+                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="update_contact12">
+                                                URL Video *
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="update_contact12" type="text"
+                                                       class="form-control" name="video"
+                                                       required="True" t-att-value="cards.get('video')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Globe Entries">
+                                        <label class="col-md-12 col-12" style="font-weight: bold;">
+                                            Address
+                                        </label>
+                                        <t t-set="id" t-value="1"/>
+                                        <t t-foreach="cards.get('globe')" t-as="globe">
+                                            <div class="entry-container-globe" id="globeContainer"
+                                                 data-entry-class="globe-entry"
+                                                 style="clear: both;">
+                                                <div class="globe-entry"
+                                                     style="background-color: #f2f2f2; padding: 10px; border-radius: 10px;position: relative;margin-bottom: 10px;">
+                                                    <div style="display: flex;justify-content: center;">
+                                                        <label class="col-md-12 col-12">
+                                                            Address
+                                                            <t t-esc="id"/>
+                                                            *
+                                                        </label>
+                                                        <!--                                                        <div class="form-group col-md-1 col-1 d-flex justify-content-center align-items-center">-->
+                                                        <!--                                                            <button type="button" class="btn btn-close btn-sm"-->
+                                                        <!--                                                                    style="position: absolute; top: 8px; right: 26px; transform: translate(50%, -50%); color: red;"-->
+                                                        <!--                                                                    onclick="removeAddressEntry(this, 'globeContainer')">-->
+                                                        <!--                                                                x-->
+                                                        <!--                                                            </button>-->
+                                                        <!--                                                        </div>-->
+                                                    </div>
+                                                    <div class="entry-inputs row"
+                                                         style="display: flex;justify-content: center;">
+                                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                                            <div class="col-sm">
+                                                                <input type="text" class="form-control"
+                                                                       t-att-name="'globe_name_' + str(id)"
+                                                                       required="True"
+                                                                       t-att-value="globe.get('name')"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                                            <div class="col-sm">
+                                                                <input type="text"
+                                                                       t-att-name="'globe_' + str(id)"
+                                                                       class="form-control"
+                                                                       t-att-value="globe.get('globe')"
+                                                                       required="True"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <t t-set="id" t-value="id+1"/>
+                                        </t>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn btn btn-light btn-sm"
+                                                    style="margin: 6px 0px;background-color: #f2f2f2;"
+                                                    onclick="addAddressEntry('entry-container-globe', 'globeContainer', 'globe-entry', 'globe_name', 'globe', 'Name', 'Globe', 'Ha Noi', 'Head Office, Branch, Factory 01,...')">
+                                                + Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div data-type="char" data-name="Link Entries">
+                                        <label class="col-md-12 col-12" style="font-weight: bold;">
+                                            Website
+                                        </label>
+                                        <t t-set="id" t-value="1"/>
+                                        <t t-foreach="cards.get('link')" t-as="link">
+                                            <div class="entry-container-link" id="linkContainer"
+                                                 data-entry-class="link-entry"
+                                                 style="clear: both;">
+                                                <div class="link-entry"
+                                                     style="background-color: #f2f2f2; padding: 10px; border-radius: 10px;position: relative;margin-bottom: 10px;">
+                                                    <div style="display: flex;justify-content: center;">
+                                                        <label class="col-md-12 col-12">
+                                                            Website
+                                                            <t t-esc="id"/>
+                                                            *
+                                                        </label>
+                                                        <!--                                                        <div class="form-group col-md-1 col-1 d-flex justify-content-center align-items-center">-->
+                                                        <!--                                                            <button type="button" class="btn btn-close btn-sm"-->
+                                                        <!--                                                                    style="position: absolute; top: 8px; right: 26px; transform: translate(50%, -50%); color: red;"-->
+                                                        <!--                                                                    onclick="removeAddressEntry(this, 'linkContainer')">-->
+                                                        <!--                                                                x-->
+                                                        <!--                                                            </button>-->
+                                                        <!--                                                        </div>-->
+                                                    </div>
+                                                    <div class="entry-inputs row"
+                                                         style="display: flex;justify-content: center;">
+                                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                                            <div class="col-sm">
+                                                                <input type="text" class="form-control"
+                                                                       t-att-name="'link_name_' + str(id)"
+                                                                       required="True"
+                                                                       t-att-value="link.get('name')"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12 s_col_no_bgcolor">
+                                                            <div class="col-sm">
+                                                                <input type="text"
+                                                                       t-att-name="'link_' + str(id)"
+                                                                       class="form-control"
+                                                                       t-att-value="link.get('link')"
+                                                                       required="True"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <t t-set="id" t-value="id+1"/>
+                                        </t>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn btn btn-light btn-sm"
+                                                    style="margin: 6px 0px;background-color: #f2f2f2;"
+                                                    onclick="addAddressEntry('entry-container-link', 'linkContainer', 'link-entry', 'link_name', 'link', 'Name', 'Link', 'e.g. https://www.facebook.com/', 'Fanpage')">
+                                                + Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-lg s_website_form_send"
+                                            style="color: #fff;background-color: #005bac;border-color: #005bac;"
+                                            t-att-card_id="cards.get('id')"
+                                            id="update-intro-btn">
+                                        Update
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="view-follow" class="uk-modal">
+                        <div class="uk-modal-dialog">
+                            <a href="" class="uk-modal-close uk-close"/>
+                            <div class="modal-header">
+                                <h2>Danh sách người theo dõi</h2>
+                            </div>
+                            <div class="modal-body" id="follower-list">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="add-image" class="uk-modal">
+                        <div class="uk-modal-dialog">
+                            <a href="" class="uk-modal-close uk-close"/>
+                            <form id="add-image-form" enctype="multipart/form-data">
+                                <small id="emailHelp" class="form-text text-muted">
+                                    Add exactly 6 – 9 photos to make your card look better
+                                </small>
+                                <div class="entry-container" id="imageContainer" style="clear: both;"
+                                     data-entry-class="image-entry">
+                                    <div class="image-entry" style="display: flex; align-items: center;">
+                                        <input type="file" name="image_1" class="my-2" style="flex: 1;" accept="image/*"
+                                               onchange="checkFileInputs()"/>
+                                        <button type="button" class="btn btn-close btn-sm" style="margin-left: 10px;"
+                                                aria-label="Close" onclick="removeImage(this)">x
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn btn-light btn-default" style="margin: 6px 0px;"
+                                        onclick="addNewImage('imageContainer', 'image-entry')">+ Add
+                                </button>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary btn-lg s_website_form_send"
+                                            style="color: #fff;background-color: #005bac;border-color: #005bac;"
+                                            t-att-card_id="cards.get('id')" id="add-image-btn" disabled="">
+                                        Add Image
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="edit-image" class="uk-modal">
+                        <div class="uk-modal-dialog">
+                            <a href="" class="uk-modal-close uk-close"/>
+                            <form id="edit-image-form" enctype="multipart/form-data">
+                                <div id="edit-photo">
+                                    <div class="wrapper">
+                                        <div class="uk-panel">
+                                            <div class="content">
+                                                <div class="uk-grid-image uk-grid uk-grid-small uk-grid-width-1-3">
+                                                    <t t-foreach="cards.get('image')" t-as="image">
+                                                        <div id="image-container" class="image-container">
+                                                            <div class="image"
+                                                                 style="position: relative;display: inline-block;">
+                                                                <input type="checkbox" t-att-id="image.get('id')"
+                                                                       t-att-image_id="image.get('id')"
+                                                                       class="image-checkbox"
+                                                                       style="position: absolute;top: 62px;right: -26px;"/>
+                                                                <label t-att-for="image.get('res_id')"
+                                                                       style="margin-bottom: 0;">
+                                                                    <img t-att-src="image_data_uri(image.get('datas'))"
+                                                                         alt=""/>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" id="deleteButton" class="btn btn-danger btn-lg"
+                                            style="margin: 6px 0px;" disabled="">
+                                        Delete
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        // Get all tab links
+                        const tabLinks = document.querySelectorAll('div#nav-tab a');
+
+                        // Get all tab panes
+                        const tabPanes = document.querySelectorAll('div#nav-tabContent div.tab-pane');
+
+                        // Function to deactivate all tabs and hide all content
+                        function deactivateAll() {
+                        tabLinks.forEach(link => {
+                        link.classList.remove('active');
+                        });
+                        tabPanes.forEach(pane => {
+                        pane.classList.remove('show', 'active');
+                        });
+                        }
+
+                        // Function to activate a tab and its content
+                        function activateTab(tabLink) {
+                        // Get the target pane
+                        const targetPaneId = tabLink.getAttribute('href');
+                        const targetPane = document.querySelector(targetPaneId);
+
+                        // Activate the tab link
+                        tabLink.classList.add('active');
+
+                        // Show the target pane
+                        targetPane.classList.add('show', 'active');
+                        }
+
+                        // Function to set default active tab
+                        function setDefaultTab() {
+                        // Get the default tab link (Giới thiệu)
+                        const defaultTabLink = document.getElementById('nav-info-tab');
+
+                        // Activate the default tab
+                        activateTab(defaultTabLink);
+                        }
+
+                        // Attach click event to each tab link
+                        tabLinks.forEach(link => {
+                        link.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent the default anchor behavior
+                        deactivateAll(); // Deactivate all tabs and hide content
+                        activateTab(link); // Activate the clicked tab and its content
+                        });
+                        });
+
+                        // Set default active tab on page load
+                        setDefaultTab();
+                        });
+                    </script>
+                    <div id="footer">
+                        <div class="wrapper apply">
+                            <div class="uk-panel">
+                                <!--                                <div class="content">-->
+                                <!--                                    <span>Copyright (C) 2023 Snine. All Rights Reserved.</span>-->
+                                <!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="/s_card/static/src/js/ecard.js"/>
+                <script src="/s_card/static/src/js/card_template.js"/>
+                <script src="/s_card/static/src/js/card_template_update.js"/>
+                <script src="/s_card/static/src/js/card_form.js"/>
+            </body>
+        </template>
+    </data>
+</odoo>

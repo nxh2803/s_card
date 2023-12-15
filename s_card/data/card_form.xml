@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="website.header_call_to_action" inherit_id="website.placeholder_header_call_to_action"
+                  name="Header Call to Action" active="True">
+            <xpath expr="." position="inside">
+                <div t-attf-class="oe_structure oe_structure_solo #{_div_classes}">
+                    <section class="s_text_block" data-snippet="s_text_block" data-name="Text">
+                        <div class="container">
+                            <t t-if="request.uid != %(base.public_user)d">
+                                <t t-set="has_card"
+                                   t-value="request.env['sne.card'].sudo().search_count([('user_id', '=', request.uid)])"/>
+                                <t t-if="has_card">
+                                    <a href="/card/delete" class="btn btn-secondary">Delete Card</a>
+                                    <t t-set="card"
+                                       t-value="request.env['sne.card'].sudo().search([('user_id', '=', request.uid)], limit=1)"/>
+                                    <t t-if="card.company">
+                                        <a href="/card" class="btn btn-primary" target="_blank">Card</a>
+                                    </t>
+                                </t>
+                                <t t-if="not has_card">
+                                    <a href="/card/form" class="btn btn-secondary">Create Card</a>
+                                </t>
+                            </t>
+                        </div>
+                    </section>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
